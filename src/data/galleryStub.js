@@ -1,0 +1,66 @@
+// Temporary stub data until Supabase gallery_items table is populated.
+// Replace with `const { data } = await supabase.from('gallery_items').select('*')`
+// once credentials are wired.
+
+export const galleryStub = [
+  {
+    id: 'stub-1',
+    title: 'HMS Victory',
+    builder: 'Placeholder Member',
+    ship_type: 'First-Rate Ship of the Line',
+    year: 2024,
+    description: 'Sample entry — real club builds will appear here once the gallery is populated.',
+    image_url: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1200',
+    featured: true,
+  },
+  {
+    id: 'stub-2',
+    title: 'Endeavour Replica',
+    builder: 'Placeholder Member',
+    ship_type: 'Bark',
+    year: 2023,
+    description: 'Sample entry. Awaiting content migration from Anelia.',
+    image_url: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1200',
+    featured: true,
+  },
+  {
+    id: 'stub-3',
+    title: 'Cutty Sark',
+    builder: 'Placeholder Member',
+    ship_type: 'Clipper',
+    year: 2022,
+    description: 'Sample entry for gallery layout preview.',
+    image_url: 'https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=1200',
+    featured: false,
+  },
+  {
+    id: 'stub-4',
+    title: 'USS Constitution',
+    builder: 'Placeholder Member',
+    ship_type: 'Frigate',
+    year: 2021,
+    description: 'Sample entry.',
+    image_url: 'https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=1200',
+    featured: false,
+  },
+  {
+    id: 'stub-5',
+    title: 'Santa Maria',
+    builder: 'Placeholder Member',
+    ship_type: 'Carrack',
+    year: 2020,
+    description: 'Sample entry.',
+    image_url: 'https://images.unsplash.com/photo-1548783307-f63adc3f200b?w=1200',
+    featured: false,
+  },
+  {
+    id: 'stub-6',
+    title: 'Mayflower',
+    builder: 'Placeholder Member',
+    ship_type: 'Galleon',
+    year: 2019,
+    description: 'Sample entry.',
+    image_url: 'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=1200',
+    featured: false,
+  },
+]
