@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
 import { supabase, isLive } from '../lib/supabase.js'
+import { venue } from '../data/clubData.js'
 
 /**
- * T2 Meetings — per Anelia's diagram:
- *  - Calendar (active?)
- *  - At Wests Ashfield
- *  - At Members' Homes (Endeavour Group)
- *  - T3: Meetings - Past (photos and videos); Calendar (dates with info)
+ * Meetings — Calendar + Wests Ashfield + Endeavour Group (members' homes).
+ * Static content transcribed from smsc.org.au.
  */
 export default function Meetings() {
   const [events, setEvents] = useState([])
@@ -38,31 +36,36 @@ export default function Meetings() {
         <p className="mt-3 text-navy-700 max-w-3xl">
           Members and visitors meet regularly to share modelling experiences,
           tips and techniques. Meetings alternate between Wests Ashfield and
-          members' homes (the Endeavour Group). Zoom is occasionally used.
+          members' homes (the Endeavour Group). Zoom is occasionally used when
+          needed.
         </p>
       </header>
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="p-6 bg-white rounded shadow-sm border border-navy-200">
-          <h2 className="font-display text-xl font-bold text-navy-900">At Wests Ashfield</h2>
+          <h2 className="font-display text-xl font-bold text-navy-900">At {venue.name}</h2>
           <p className="mt-2 text-sm text-navy-700">
-            115 Liverpool Rd, Ashfield NSW.<br />
-            Primary meeting venue, used for the AGM and annual EXPO.
+            {venue.address}.<br />
+            Primary meeting venue — used for the AGM and the annual Festival
+            of Model Ship Building (EXPO).
           </p>
         </div>
         <div className="p-6 bg-white rounded shadow-sm border border-navy-200">
-          <h2 className="font-display text-xl font-bold text-navy-900">At Members' Homes</h2>
+          <h2 className="font-display text-xl font-bold text-navy-900">Endeavour Group (Members' Homes)</h2>
           <p className="mt-2 text-sm text-navy-700">
-            Endeavour Group — informal Show &amp; Tell sessions held at members' homes
-            on weekends in "odd" months. Dates and addresses are notified in
-            Chatterbox and on the Calendar below.
+            On some weekends in the "odd" months we meet at members' homes for
+            informal Show &amp; Tell sessions. Dates and addresses are notified
+            in Chatterbox and on the calendar below.
           </p>
         </div>
       </div>
 
       <div>
         <h2 className="font-display text-2xl font-bold text-navy-900">Calendar</h2>
-        <p className="text-sm text-navy-500 mt-1">Upcoming meetings and events.</p>
+        <p className="text-sm text-navy-500 mt-1">
+          Meeting dates occasionally change — this calendar always has the
+          most up-to-date information.
+        </p>
         {loading && <p className="mt-4 text-navy-500">Loading calendar…</p>}
         <ul className="mt-4 divide-y divide-navy-200 bg-white rounded shadow-sm border border-navy-200">
           {!loading && upcoming.length === 0 && (

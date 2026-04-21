@@ -1,0 +1,466 @@
+{
+  "regular": [
+    {
+      "id": "issue-106",
+      "issue_no": 106,
+      "title": "Issue 106 - Aug 2025",
+      "date_text": "Aug 2025",
+      "category": "current",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/106Chatterbox106Aug25.pdf"
+    },
+    {
+      "id": "issue-105",
+      "issue_no": 105,
+      "title": "Issue 105 - July 2025",
+      "date_text": "July 2025",
+      "category": "current",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/105Chatterbox105Jul25.pdf"
+    },
+    {
+      "id": "issue-104",
+      "issue_no": 104,
+      "title": "Issue 104 - June 2025",
+      "date_text": "June 2025",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/104-Chatterbox104June25.pdf"
+    },
+    {
+      "id": "issue-103",
+      "issue_no": 103,
+      "title": "Issue 103 - May 2025",
+      "date_text": "May 2025",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/103-Chatterbox103May25.pdf"
+    },
+    {
+      "id": "issue-102",
+      "issue_no": 102,
+      "title": "Issue 102 - April 2025",
+      "date_text": "April 2025",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/102-Chatterbox102Apr25.pdf"
+    },
+    {
+      "id": "issue-101",
+      "issue_no": 101,
+      "title": "Issue 101 - March 2025",
+      "date_text": "March 2025",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/101-Chatterbox101Mar25.pdf"
+    },
+    {
+      "id": "issue-100",
+      "issue_no": 100,
+      "title": "Issue 100 - Feb 2025",
+      "date_text": "Feb 2025",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/100-Chatterbox100Feb25.pdf"
+    },
+    {
+      "id": "issue-99",
+      "issue_no": 99,
+      "title": "Issue 99 - Jan 2025",
+      "date_text": "Jan 2025",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/99-Chatterbox99Jan25.pdf"
+    },
+    {
+      "id": "issue-98",
+      "issue_no": 98,
+      "title": "Issue 98 - December 2024",
+      "date_text": "December 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/98-Chatterbox98Dec24.pdf"
+    },
+    {
+      "id": "issue-97",
+      "issue_no": 97,
+      "title": "Issue 97 - November 2024",
+      "date_text": "November 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/97-Chatterbox97Nov24.pdf"
+    },
+    {
+      "id": "issue-96",
+      "issue_no": 96,
+      "title": "Issue 96 - Oct 2024",
+      "date_text": "Oct 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/96-Chatterbox96AOct2024.pdf"
+    },
+    {
+      "id": "issue-96",
+      "issue_no": 96,
+      "title": "Issue 96 - Oct 2024",
+      "date_text": "Oct 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/96-Chatterbox96Oct24.pdf"
+    },
+    {
+      "id": "issue-95",
+      "issue_no": 95,
+      "title": "Issue 95 - September 2024",
+      "date_text": "September 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/95-Chatterbox95Sep24.pdf"
+    },
+    {
+      "id": "issue-94",
+      "issue_no": 94,
+      "title": "Issue 94 - August 2024",
+      "date_text": "August 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/94-Chatterbox94Aug24_1.pdf"
+    },
+    {
+      "id": "issue-93",
+      "issue_no": 93,
+      "title": "Issue 93 - July 2024",
+      "date_text": "July 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/93-Chatterbox93Jul24.pdf"
+    },
+    {
+      "id": "issue-92",
+      "issue_no": 92,
+      "title": "Issue 92 - June 2024",
+      "date_text": "June 2024",
+      "category": "past",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/92-Chatterbox92June24.pdf"
+    }
+  ],
+  "special": [
+    {
+      "id": "special-1",
+      "issue_no": 1,
+      "title": "Special Issue #26 \u2014 Shenandoah Sark (Janson)",
+      "date_text": "Feb 2025",
+      "ship_name": "Shenandoah Sark",
+      "builder": "Janson",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/EXPO2023Issue.pdf"
+    },
+    {
+      "id": "special-2",
+      "issue_no": 2,
+      "title": "Special EXPO Issue \u2014 EXPO 2023",
+      "date_text": "EXPO 2023",
+      "ship_name": "EXPO 2023",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/ChatterboxEXPO2022Issue.pdf"
+    },
+    {
+      "id": "special-3",
+      "issue_no": 3,
+      "title": "Special EXPO Issue \u2014 EXPO 2022",
+      "date_text": "EXPO 2022",
+      "ship_name": "EXPO 2022",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue25-Bennett-Sirius.pdf"
+    },
+    {
+      "id": "special-4",
+      "issue_no": 4,
+      "title": "Special Issue #25 \u2014 Sirius (Bennett)",
+      "date_text": "",
+      "ship_name": "Sirius",
+      "builder": "Bennett",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue24-Jan23-Barton-DisplayCase.pdf"
+    },
+    {
+      "id": "special-5",
+      "issue_no": 5,
+      "title": "Special Issue #24 \u2014 Display Case (Barton)",
+      "date_text": "Jan 2023",
+      "ship_name": "Display Case",
+      "builder": "Barton",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue23-Oct22-Butcher-SanJuanOcCre.pdf"
+    },
+    {
+      "id": "special-6",
+      "issue_no": 6,
+      "title": "Special Issue #23 \u2014 San Juan (OcCre) (Butcher)",
+      "date_text": "Oct 2022",
+      "ship_name": "San Juan (OcCre)",
+      "builder": "Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue22Aug22-Nolan-Duyfken_1.pdf"
+    },
+    {
+      "id": "special-7",
+      "issue_no": 7,
+      "title": "Special Issue #22 \u2014 Duyfken (Ian Nolan)",
+      "date_text": "",
+      "ship_name": "Duyfken",
+      "builder": "Ian Nolan",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue21Jul22-Butcher-CuttySarkBillings.pdf"
+    },
+    {
+      "id": "special-8",
+      "issue_no": 8,
+      "title": "Special Issue #21 \u2014 Cutty Sark (Michael Butcher)",
+      "date_text": "",
+      "ship_name": "Cutty Sark",
+      "builder": "Michael Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue20Jun22-Nemeth-SovereignoftheSeas.pdf"
+    },
+    {
+      "id": "special-9",
+      "issue_no": 9,
+      "title": "Special Issue #20 \u2014 Sovereign of the Seas (Janos Nemeth)",
+      "date_text": "",
+      "ship_name": "Sovereign of the Seas",
+      "builder": "Janos Nemeth",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue19Jan22-Barton-Krait.pdf"
+    },
+    {
+      "id": "special-10",
+      "issue_no": 10,
+      "title": "Special Issue #19 \u2014 Krait (Michael Barton)",
+      "date_text": "",
+      "ship_name": "Krait",
+      "builder": "Michael Barton",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue18Aug21-Butcher-Rattlesnake.pdf"
+    },
+    {
+      "id": "special-11",
+      "issue_no": 11,
+      "title": "Special Issue #18 \u2014 Rattlesnake (Michael Butcher)",
+      "date_text": "",
+      "ship_name": "Rattlesnake",
+      "builder": "Michael Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue18Aug21-Butcher-Rattlesnake.pdf"
+    },
+    {
+      "id": "special-12",
+      "issue_no": 12,
+      "title": "Special Issue #17 \u2014 Le Soleil Royal (Stern) (Janos Nemeth)",
+      "date_text": "",
+      "ship_name": "Le Soleil Royal (Stern)",
+      "builder": "Janos Nemeth",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue17Jun21.pdf"
+    },
+    {
+      "id": "special-13",
+      "issue_no": 13,
+      "title": "Special Issue #16 \u2014 Duyfken (Robyn Chester)",
+      "date_text": "",
+      "ship_name": "Duyfken",
+      "builder": "Robyn Chester",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue16Mar21-Chester-Duyfken.pdf"
+    },
+    {
+      "id": "special-14",
+      "issue_no": 14,
+      "title": "Special Issue #15 \u2014 HMS Surprise (David Lendrum)",
+      "date_text": "",
+      "ship_name": "HMS Surprise",
+      "builder": "David Lendrum",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue15Aug20-Lendrum-HMSSurprise.pdf"
+    },
+    {
+      "id": "special-15",
+      "issue_no": 15,
+      "title": "Special Issue #14 \u2014 HMT Dunera (Tom Wolf)",
+      "date_text": "",
+      "ship_name": "HMT Dunera",
+      "builder": "Tom Wolf",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue14Aug20-Wolf-HMTDunera.pdf"
+    },
+    {
+      "id": "special-16",
+      "issue_no": 16,
+      "title": "Special Issue #13 \u2014 Mercator (Michael Butcher)",
+      "date_text": "",
+      "ship_name": "Mercator",
+      "builder": "Michael Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue13Jul20-Butcher-Mercator.pdf"
+    },
+    {
+      "id": "special-17",
+      "issue_no": 17,
+      "title": "Special Issue #12 \u2014 Duyfken (Michael Barton)",
+      "date_text": "",
+      "ship_name": "Duyfken",
+      "builder": "Michael Barton",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue12Jun20Barton-Duyfken.pdf"
+    },
+    {
+      "id": "special-18",
+      "issue_no": 18,
+      "title": "Special EXPO Issue \u2014 EXPO 2019",
+      "date_text": "EXPO 2019",
+      "ship_name": "EXPO 2019",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/EXPO2019Issue.pdf"
+    },
+    {
+      "id": "special-19",
+      "issue_no": 19,
+      "title": "Special Issue #11 \u2014 Swedish Gunboat (Michael Butcher)",
+      "date_text": "",
+      "ship_name": "Swedish Gunboat",
+      "builder": "Michael Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue11Nov19-Butcher-SwedishGunboat.pdf"
+    },
+    {
+      "id": "special-20",
+      "issue_no": 20,
+      "title": "Special EXPO Issue \u2014 EXPO 2018",
+      "date_text": "EXPO 2018",
+      "ship_name": "EXPO 2018",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/EXPO2018Issuev.2REDUCED.pdf"
+    },
+    {
+      "id": "special-21",
+      "issue_no": 21,
+      "title": "Special Issue #10 \u2014 Endeavour (Tom Wolf)",
+      "date_text": "",
+      "ship_name": "Endeavour",
+      "builder": "Tom Wolf",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue10-Aug18-Wolf-Endeavour_1.pdf"
+    },
+    {
+      "id": "special-22",
+      "issue_no": 22,
+      "title": "Special Issue #9 \u2014 HMS Greyhound (Michael Butcher)",
+      "date_text": "",
+      "ship_name": "HMS Greyhound",
+      "builder": "Michael Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue9-June2018-HMSGreyhound-MichaelButcher.pdf"
+    },
+    {
+      "id": "special-23",
+      "issue_no": 23,
+      "title": "Special EXPO 2017 Issue Part 1 \u2014 EXPO 2017 Part 1",
+      "date_text": "Oct 2017",
+      "ship_name": "EXPO 2017 Part 1",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialEXPO17Issue-Oct17Pt.1.pdf"
+    },
+    {
+      "id": "special-24",
+      "issue_no": 24,
+      "title": "Special EXPO 2017 Issue Part 2 \u2014 EXPO 2017 Part 2",
+      "date_text": "Oct 2017",
+      "ship_name": "EXPO 2017 Part 2",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialEXPO17Issue-Oct17Pt.2.pdf"
+    },
+    {
+      "id": "special-25",
+      "issue_no": 25,
+      "title": "Special Issue #8 \u2014 Royal Caroline (Janos Nemeth)",
+      "date_text": "",
+      "ship_name": "Royal Caroline",
+      "builder": "Janos Nemeth",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue8Feb18-Nemeth-RoyalCaroline.pdf"
+    },
+    {
+      "id": "special-26",
+      "issue_no": 26,
+      "title": "Special Issue #7 \u2014 Corel \"Endeavour\" (Leon Griffiths)",
+      "date_text": "",
+      "ship_name": "Corel \"Endeavour\"",
+      "builder": "Leon Griffiths",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue7Dec17-Giffiths-CorelEndeavour_1.pdf"
+    },
+    {
+      "id": "special-27",
+      "issue_no": 27,
+      "title": "Special Issue #6 \u2014 Occre Aurora (Michael Butcher)",
+      "date_text": "",
+      "ship_name": "Occre Aurora",
+      "builder": "Michael Butcher",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue6Aug17-Butcher-Aurora.pdf"
+    },
+    {
+      "id": "special-28",
+      "issue_no": 28,
+      "title": "Special Issue #5 \u2014 HMS Vanguard (Leon Griffiths)",
+      "date_text": "",
+      "ship_name": "HMS Vanguard",
+      "builder": "Leon Griffiths",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue5Jun17-Griffiths-Vanguard_1.pdf"
+    },
+    {
+      "id": "special-29",
+      "issue_no": 29,
+      "title": "Special Issue #4 \u2014 HMS Beagle (Mike Barton)",
+      "date_text": "",
+      "ship_name": "HMS Beagle",
+      "builder": "Mike Barton",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue4Feb17-Barton-Beagle.pdf"
+    },
+    {
+      "id": "special-30",
+      "issue_no": 30,
+      "title": "Special Issue #3 \u2014 Le Canot Imperial (Janos Nemeth & Tom Wolf)",
+      "date_text": "",
+      "ship_name": "Le Canot Imperial",
+      "builder": "Janos Nemeth & Tom Wolf",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue3Jan17-Nemeth-LeCanotImperial.pdf"
+    },
+    {
+      "id": "special-31",
+      "issue_no": 31,
+      "title": "Special EXPO Issue \u2014 EXPO 2016",
+      "date_text": "EXPO 2016",
+      "ship_name": "EXPO 2016",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/EXPO2016Issue.pdf"
+    },
+    {
+      "id": "special-32",
+      "issue_no": 32,
+      "title": "Special Issue #2 \u2014 Wicked Wench",
+      "date_text": "",
+      "ship_name": "Wicked Wench",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue2Nov161.pdf"
+    },
+    {
+      "id": "special-33",
+      "issue_no": 33,
+      "title": "Special Issue #1 \u2014 OcCre \"Montanes\"",
+      "date_text": "",
+      "ship_name": "OcCre \"Montanes\"",
+      "builder": "",
+      "category": "special",
+      "pdf_url": "https://www.smsc.org.au/imagesDB/wysiwyg/SpecialIssue1Sep16.pdf"
+    }
+  ],
+  "source": "smsc.org.au (existing club site)",
+  "extracted_at": "2026-04-21"
+}
