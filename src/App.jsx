@@ -1,23 +1,45 @@
 import { Outlet, NavLink, Link } from 'react-router-dom'
 
+// Nav order matches Anelia's T2 diagram exactly:
+// Landing → About & Membership → Meetings → Events/EXPO → Gallery → Chatterbox
 const nav = [
   { to: '/',             label: 'Home' },
-  { to: '/about',        label: 'About' },
+  { to: '/about',        label: 'About & Membership' },
+  { to: '/meetings',     label: 'Meetings' },
+  { to: '/events',       label: 'Events & EXPO' },
   { to: '/gallery',      label: 'Gallery' },
-  { to: '/events',       label: 'Events' },
   { to: '/chatterbox',   label: 'Chatterbox' },
-  { to: '/membership',   label: 'Membership' },
   { to: '/contact',      label: 'Contact' },
 ]
 
+function ClubBanner({ position = 'top' }) {
+  // The solid navy bar with the club wordmark, wrapping top & bottom of every page
+  // as per Anelia's layout diagram.
+  return (
+    <div
+      className={`bg-navy-800 text-white tracking-widest text-center font-display
+        ${position === 'top' ? 'border-b-2 border-brass-500' : 'border-t-2 border-brass-500'}`}
+    >
+      <div className="max-w-7xl mx-auto px-4 py-2 text-sm md:text-base font-semibold uppercase">
+        Sydney Model Shipbuilders Club
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="bg-navy-800 text-white shadow-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="font-display text-xl md:text-2xl font-bold leading-tight">
-              Sydney Model Shipbuilders Club
+    <div className="min-h-screen flex flex-col bg-navy-50">
+      {/* Top navy wordmark banner */}
+      <ClubBanner position="top" />
+
+      {/* Navigation */}
+      <header className="bg-white shadow-sm sticky top-0 z-40 border-b border-navy-200">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <Link to="/" className="flex items-center">
+            <span className="font-display text-navy-900 leading-tight">
+              <span className="block text-[10px] uppercase tracking-[0.2em] text-brass-600 font-semibold">Est. 1972</span>
+              <span className="block font-bold text-base md:text-lg">Sydney Model Shipbuilders Club</span>
             </span>
           </Link>
           <nav className="hidden md:flex gap-1">
@@ -28,7 +50,9 @@ export default function App() {
                 end={n.to === '/'}
                 className={({isActive}) =>
                   `px-3 py-2 rounded text-sm font-medium transition ${
-                    isActive ? 'bg-brass-500 text-navy-900' : 'hover:bg-navy-700 text-navy-100'
+                    isActive
+                      ? 'bg-navy-800 text-white'
+                      : 'text-navy-800 hover:bg-navy-100'
                   }`
                 }
               >
@@ -37,7 +61,7 @@ export default function App() {
             ))}
           </nav>
         </div>
-        <nav className="md:hidden border-t border-navy-700 px-2 py-2 overflow-x-auto flex gap-1 text-sm">
+        <nav className="md:hidden border-t border-navy-100 px-2 py-2 overflow-x-auto flex gap-1 text-sm">
           {nav.map(n => (
             <NavLink
               key={n.to}
@@ -45,7 +69,7 @@ export default function App() {
               end={n.to === '/'}
               className={({isActive}) =>
                 `whitespace-nowrap px-3 py-1 rounded ${
-                  isActive ? 'bg-brass-500 text-navy-900' : 'text-navy-100'
+                  isActive ? 'bg-navy-800 text-white' : 'text-navy-800'
                 }`
               }
             >
@@ -59,34 +83,40 @@ export default function App() {
         <Outlet />
       </main>
 
-      <footer className="bg-navy-900 text-navy-200 mt-16">
-        <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
+      {/* Footer */}
+      <footer className="bg-navy-50 border-t border-navy-200 mt-12">
+        <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-navy-700">
           <div>
-            <h4 className="text-white text-lg font-display mb-3">Sydney Model Shipbuilders Club</h4>
+            <h4 className="text-navy-900 text-lg font-display font-bold mb-3">The Club</h4>
             <p className="text-sm leading-relaxed">
-              Meeting monthly in Vaucluse, NSW. Welcoming builders of historic and
-              contemporary model ships since 1972.
+              An active group of enthusiasts passionate about model shipbuilding.
+              Meetings held at Wests Ashfield and at members' homes.
+              Visitors and new members always welcome.
             </p>
           </div>
           <div>
-            <h4 className="text-white text-lg font-display mb-3">Find us</h4>
-            <p className="text-sm">
-              38 Towns Rd, Vaucluse NSW 2030<br />
-              Meetings: first Wednesday of each month
+            <h4 className="text-navy-900 text-lg font-display font-bold mb-3">Meeting Venue</h4>
+            <p className="text-sm leading-relaxed">
+              Wests Ashfield<br />
+              115 Liverpool Rd, Ashfield NSW<br />
+              <span className="text-navy-500 text-xs">Venue may change — check Events page.</span>
             </p>
           </div>
           <div>
-            <h4 className="text-white text-lg font-display mb-3">Contact</h4>
+            <h4 className="text-navy-900 text-lg font-display font-bold mb-3">Contact</h4>
             <p className="text-sm">
-              <a className="hover:text-brass-500" href="mailto:info@smsc.org.au">info@smsc.org.au</a>
+              <Link to="/contact" className="underline hover:text-brass-600">Send us a message →</Link>
             </p>
           </div>
-        </div>
-        <div className="border-t border-navy-800 text-xs text-center py-4 text-navy-400">
-          © {new Date().getFullYear()} Sydney Model Shipbuilders Club ·
-          Site by <a href="https://websitebuilderaustralia.com.au" className="hover:text-brass-500">Website Builder Australia</a>
         </div>
       </footer>
+
+      {/* Bottom navy wordmark banner (mirrors top — per Anelia's layout) */}
+      <ClubBanner position="bottom" />
+
+      <div className="bg-navy-900 text-xs text-center py-3 text-navy-400">
+        © {new Date().getFullYear()} Sydney Model Shipbuilders Club
+      </div>
     </div>
   )
 }

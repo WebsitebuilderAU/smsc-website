@@ -1,33 +1,66 @@
+import { Link } from 'react-router-dom'
+
+/**
+ * T2 About the Club & Membership — single combined page per Anelia's diagram.
+ */
 export default function About() {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-display font-bold text-navy-900">About the Club</h1>
-      <p className="mt-6 text-lg text-navy-700 leading-relaxed">
-        The Sydney Model Shipbuilders Club has been a home for enthusiasts of historic
-        and contemporary model shipbuilding since 1972. Our members range from first-time
-        builders to master craftsmen with decades of experience.
-      </p>
+    <section className="max-w-4xl mx-auto px-4 py-12 space-y-10">
+      <header>
+        <h1 className="text-4xl font-display font-bold text-navy-900">About the Club &amp; Membership</h1>
+      </header>
 
-      <h2 className="text-2xl font-display font-bold text-navy-900 mt-12">What we do</h2>
-      <ul className="mt-4 space-y-2 text-navy-700 list-disc list-inside">
-        <li>Monthly meetings with show-and-tell of current builds</li>
-        <li>Annual EXPO showcasing members' completed models</li>
-        <li>Workshops and demonstrations of specialist techniques</li>
-        <li>Research library and reference collection</li>
-        <li>Mentoring for newer builders</li>
-        <li>The Chatterbox quarterly newsletter</li>
-      </ul>
+      <div>
+        <h2 className="font-display text-2xl font-bold text-navy-900">About</h2>
+        <p className="mt-3 text-navy-700 leading-relaxed">
+          We are an active group of enthusiasts passionate about model
+          shipbuilding. Members and visitors meet regularly to share modelling
+          experiences, tips and techniques. The club helps and encourages
+          members and visitors to discover and learn the various model ship
+          building techniques used, and to see the results of the dedicated
+          time and patience of applying those techniques.
+        </p>
+        <p className="mt-3 text-navy-700 leading-relaxed">
+          All new members are very welcome. Visitors are encouraged to attend,
+          bring current projects for discussion, and present their models at
+          any stage of completion.
+        </p>
+      </div>
 
-      <h2 className="text-2xl font-display font-bold text-navy-900 mt-12">Committee</h2>
-      <p className="mt-4 text-navy-700">
-        Committee details will be added here once supplied by the club.
-      </p>
+      <div>
+        <h2 className="font-display text-2xl font-bold text-navy-900">Meetings</h2>
+        <ul className="mt-3 space-y-2 text-navy-700 list-disc pl-6">
+          <li>Regular meetings at Wests Ashfield (primary venue)</li>
+          <li>Endeavour Group Show &amp; Tell sessions at members' homes on weekends in "odd" months</li>
+          <li>Occasional Zoom meetings</li>
+          <li>Annual EXPO and Annual General Meeting</li>
+        </ul>
+        <p className="mt-3 text-sm text-navy-500">
+          See the <Link to="/meetings" className="underline hover:text-brass-600">Meetings calendar</Link> for
+          the next meeting date and venue.
+        </p>
+      </div>
 
-      <h2 className="text-2xl font-display font-bold text-navy-900 mt-12">Where we meet</h2>
-      <p className="mt-4 text-navy-700">
-        38 Towns Rd, Vaucluse NSW 2030<br />
-        First Wednesday of every month, 7:30 PM
-      </p>
+      <div>
+        <h2 className="font-display text-2xl font-bold text-navy-900">Membership</h2>
+        <p className="mt-3 text-navy-700 leading-relaxed">
+          Membership is open to anyone with an interest in model shipbuilding —
+          whether you're a first-time builder or a seasoned craftsman.
+          Members receive the Chatterbox newsletter, access to the meeting
+          calendar, and participation in the annual EXPO.
+        </p>
+        <p className="mt-3 text-navy-700">
+          To enquire about joining, please <Link to="/contact" className="underline hover:text-brass-600">send us a message</Link>.
+        </p>
+      </div>
+
+      <div>
+        <h2 className="font-display text-2xl font-bold text-navy-900">Committee</h2>
+        <p className="mt-3 text-navy-700">
+          The Executive Committee is elected annually at the AGM. Committee
+          member details will appear here once supplied by the club.
+        </p>
+      </div>
     </section>
   )
 }

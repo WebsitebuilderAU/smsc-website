@@ -1,36 +1,74 @@
+import { useEffect, useState } from 'react'
+import { supabase, isLive } from '../lib/supabase.js'
+
+/**
+ * T2 Events / EXPO — per Anelia's diagram:
+ *   "2026 — 12th EXPO. 11 past EXPOs. Videos and Images to be hosted on the site."
+ */
 export default function Events() {
-  const events = [
-    { id: 1, title: 'Monthly Meeting',        date: 'First Wed monthly · 7:30 PM', location: 'Vaucluse Clubrooms', type: 'Meeting' },
-    { id: 2, title: 'Annual EXPO (placeholder)', date: 'October 2026',                location: 'To be confirmed',   type: 'EXPO' },
-    { id: 3, title: 'Workshop — Rigging basics', date: 'TBA',                         location: 'Clubrooms',         type: 'Workshop' },
-  ]
+  const [events, setEvents] = useState([])
+  const [loading, setLoading] = useState(isLive)
+
+  useEffect(() => {
+    if (!isLive) return
+    let active = true
+    supabase
+      .from('events')
+      .select('*')
+      .ilike('title', '%expo%')
+      .order('date', { ascending: false })
+      .then(({ data, error }) => {
+        if (!active) return
+        if (!error && data) setEvents(data)
+        setLoading(false)
+      })
+    return () => { active = false }
+  }, [])
 
   return (
-    <section className="max-w-4xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-display font-bold text-navy-900">Events</h1>
-      <p className="mt-3 text-navy-600">
-        Upcoming meetings, workshops and our annual EXPO. Visitors welcome — please email
-        ahead for any non-member event.
-      </p>
+    <section className="max-w-5xl mx-auto px-4 py-12 space-y-10">
+      <header>
+        <h1 className="text-4xl font-display font-bold text-navy-900">Events &amp; EXPO</h1>
+        <p className="mt-3 text-navy-700 max-w-3xl">
+          The club's annual EXPO is our flagship event — an open exhibition of
+          maritime and related models held at Wests Ashfield. The 12th EXPO
+          will be held in 2026. This page hosts videos and images from the
+          current and all past EXPOs.
+        </p>
+      </header>
 
-      <ul className="mt-10 space-y-4">
-        {events.map(e => (
-          <li key={e.id} className="bg-white rounded-lg shadow p-6 flex items-start gap-4">
-            <span className="inline-block px-3 py-1 rounded text-xs font-semibold uppercase tracking-wide bg-brass-500 text-navy-900">
-              {e.type}
-            </span>
-            <div>
-              <h3 className="font-display text-xl text-navy-900">{e.title}</h3>
-              <p className="text-navy-600 text-sm mt-1">{e.date}</p>
-              <p className="text-navy-500 text-sm">{e.location}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div className="p-6 bg-navy-800 text-white rounded shadow">
+        <p className="text-xs uppercase tracking-widest text-brass-400 font-semibold">This year</p>
+        <h2 className="mt-1 font-display text-2xl font-bold">EXPO 2026 — 12th Annual</h2>
+        <p className="mt-2 text-sm text-navy-100">
+          Open to all members, visitors and other modelling clubs to exhibit
+          maritime and related models. Full date and programme published in
+          Chatterbox and on the Meetings calendar.
+        </p>
+      </div>
 
-      <p className="mt-10 text-sm text-navy-500">
-        The live events calendar will appear here once the admin panel is active.
-      </p>
+      <div>
+        <h2 className="font-display text-2xl font-bold text-navy-900">Past EXPOs</h2>
+        <p className="text-sm text-navy-500 mt-1">Videos and images from 11 previous EXPOs.</p>
+        {loading && <p className="mt-4 text-navy-500">Loading…</p>}
+        <ul className="mt-4 grid md:grid-cols-2 gap-4">
+          {!loading && events.length === 0 && (
+            <li className="col-span-full p-5 bg-white rounded shadow-sm border border-navy-200 text-navy-500 text-sm">
+              EXPO archive videos and photos will appear here once uploaded by the club.
+            </li>
+          )}
+          {events.map(e => (
+            <li key={e.id} className="p-5 bg-white rounded shadow-sm border border-navy-200">
+              <h3 className="font-display text-lg text-navy-900">{e.title}</h3>
+              <p className="text-sm text-navy-500">
+                {new Date(e.date).toLocaleDateString('en-AU', { month: 'long', year: 'numeric' })}
+                {e.location ? ` · ${e.location}` : ''}
+              </p>
+              {e.description && <p className="mt-2 text-sm text-navy-700">{e.description}</p>}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }
