@@ -51,8 +51,12 @@ export default function Chatterbox() {
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-display font-bold text-navy-900">The Chatterbox</h1>
-      <p className="mt-3 text-navy-700">
+      <img
+        src={`${import.meta.env.BASE_URL}images/smsc_chatterbox_masthead.png`}
+        alt="Chatterbox — Sydney Model Shipbuilders Club newsletter masthead"
+        className="w-full max-w-3xl mx-auto rounded shadow-sm"
+      />
+      <p className="mt-6 text-navy-700">
         The club's regular newsletter — build reports, meeting notes, EXPO coverage
         and technique articles. Search the whole archive by word.
       </p>

@@ -27,6 +27,11 @@ export default function Events() {
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-12 space-y-10">
+      <img
+        src={`${import.meta.env.BASE_URL}images/smsc_header_ships.jpg`}
+        alt="Model ships exhibited at a past SMSC EXPO"
+        className="w-full h-48 md:h-64 object-cover rounded shadow-sm"
+      />
       <header>
         <h1 className="text-4xl font-display font-bold text-navy-900">Events &amp; EXPO</h1>
         <p className="mt-3 text-navy-700 max-w-3xl">

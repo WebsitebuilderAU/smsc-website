@@ -30,15 +30,25 @@ export default function Home() {
 
   return (
     <>
-      {/* Intro strip — matches the "Live images of models" caption in the layout */}
-      <section className="max-w-7xl mx-auto px-4 pt-10 pb-6 text-center">
-        <p className="text-xs uppercase tracking-widest text-brass-600 font-semibold">
-          Sydney Model Shipbuilders Club
-        </p>
-        <h1 className="mt-2 font-display text-3xl md:text-4xl text-navy-900 font-bold">
-          Live images of our members' model ships
-        </h1>
-        <p className="mt-3 text-navy-700 max-w-2xl mx-auto text-sm md:text-base">
+      {/* Club banner — the club's own composite of member-built ships */}
+      <section className="relative bg-navy-800">
+        <img
+          src={`${import.meta.env.BASE_URL}images/smsc_header_ships.jpg`}
+          alt="SMSC member-built model ships on display"
+          className="w-full h-48 md:h-64 object-cover object-center opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/30 to-navy-900/70 flex flex-col items-center justify-end pb-6 text-white text-center px-4">
+          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-brass-400 font-semibold">
+            Established 1972 · Sydney
+          </p>
+          <h1 className="mt-1 font-display text-2xl md:text-4xl font-bold drop-shadow">
+            Live images of our members' model ships
+          </h1>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 pt-8 pb-4 text-center">
+        <p className="text-navy-700 max-w-2xl mx-auto text-sm md:text-base">
           Click any model to read about the ship, see the builder's notes,
           watch interviews and open the related Chatterbox article.
         </p>
