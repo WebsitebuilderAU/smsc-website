@@ -38,7 +38,6 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center">
             <span className="font-display text-navy-900 leading-tight">
-              <span className="block text-[10px] uppercase tracking-[0.2em] text-brass-600 font-semibold">Est. 1972</span>
               <span className="block font-bold text-base md:text-lg">Sydney Model Shipbuilders Club</span>
             </span>
           </Link>
@@ -88,18 +87,14 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-navy-700">
           <div>
             <h4 className="text-navy-900 text-lg font-display font-bold mb-3">The Club</h4>
-            <p className="text-sm leading-relaxed">
-              An active group of enthusiasts passionate about model shipbuilding.
-              Meetings held at Wests Ashfield and at members' homes.
-              Visitors and new members always welcome.
+            <p className="text-sm italic text-navy-500">
+              [Placeholder — short club description to be supplied.]
             </p>
           </div>
           <div>
             <h4 className="text-navy-900 text-lg font-display font-bold mb-3">Meeting Venue</h4>
-            <p className="text-sm leading-relaxed">
-              Wests Ashfield<br />
-              115 Liverpool Rd, Ashfield NSW<br />
-              <span className="text-navy-500 text-xs">Venue may change — check Events page.</span>
+            <p className="text-sm italic text-navy-500">
+              [Placeholder — venue details to be supplied.]
             </p>
           </div>
           <div>

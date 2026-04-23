@@ -36,10 +36,9 @@ export default function Contact() {
         {status && <p className="text-green-700 text-sm">{status}</p>}
       </form>
 
-      <div className="mt-10 text-navy-700">
-        <p><strong>Clubrooms:</strong> 38 Towns Rd, Vaucluse NSW 2030</p>
-        <p className="mt-1"><strong>Email:</strong> <a className="text-brass-600 hover:underline" href="mailto:info@smsc.org.au">info@smsc.org.au</a></p>
-      </div>
+      <p className="mt-10 text-xs text-navy-500 italic">
+        [Placeholder — club contact details and postal address to be supplied.]
+      </p>
     </section>
   )
 }
