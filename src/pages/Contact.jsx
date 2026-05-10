@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
 
 export default function Contact() {
   const [status, setStatus] = useState(null)
@@ -11,6 +12,8 @@ export default function Contact() {
   }
 
   return (
+    <>
+    <SubpageHeaderImage label="Contact — header image" />
     <section className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-display font-bold text-navy-900">Contact Us</h1>
       <p className="mt-3 text-navy-600">
@@ -40,5 +43,6 @@ export default function Contact() {
         [Placeholder — club contact details and postal address to be supplied.]
       </p>
     </section>
+    </>
   )
 }

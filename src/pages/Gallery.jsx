@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { galleryStub } from '../data/galleryStub.js'
 import { supabase, isLive } from '../lib/supabase.js'
 import ShipTile from '../components/ShipTile.jsx'
+import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
 
 /**
  * T2 → T3 Gallery.
@@ -53,6 +54,8 @@ export default function Gallery() {
   })
 
   return (
+    <>
+    <SubpageHeaderImage label="Gallery — Modelmakers / Models — header image" />
     <section className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-display font-bold text-navy-900">Gallery — Model Ships</h1>
       <p className="mt-3 text-navy-700 max-w-3xl">
@@ -100,5 +103,6 @@ export default function Gallery() {
         )}
       </div>
     </section>
+    </>
   )
 }

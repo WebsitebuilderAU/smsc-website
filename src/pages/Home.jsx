@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { galleryStub } from '../data/galleryStub.js'
 import { supabase, isLive } from '../lib/supabase.js'
 import ShipTile from '../components/ShipTile.jsx'
+import HeroCollage from '../components/HeroCollage.jsx'
+import QuickTiles from '../components/QuickTiles.jsx'
 
 /**
  * T1 landing page — per Anelia's diagram.
@@ -30,28 +32,11 @@ export default function Home() {
 
   return (
     <>
-      {/* Banner — final hero image to be supplied by the Club */}
-      <section className="relative bg-navy-800">
-        <div className="h-48 md:h-64 flex items-center justify-center text-white text-center px-4">
-          <div>
-            <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-brass-400 font-semibold">
-              Placeholder banner
-            </p>
-            <h1 className="mt-1 font-display text-2xl md:text-4xl font-bold drop-shadow">
-              Banner image and headline to be supplied
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-4 pt-8 pb-4 text-center">
-        <p className="text-navy-500 max-w-2xl mx-auto text-sm italic">
-          [Placeholder — intro copy to be supplied by the Club.]
-        </p>
-      </section>
+      <HeroCollage />
+      <QuickTiles />
 
       {/* THE gallery grid — this IS the landing page */}
-      <section className="max-w-7xl mx-auto px-4 pb-16">
+      <section className="max-w-7xl mx-auto px-4 pt-10 pb-16">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {items.map(item => <ShipTile key={item.id} item={item} />)}
         </div>

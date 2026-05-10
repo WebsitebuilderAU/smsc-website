@@ -10,6 +10,14 @@ import Meetings from './pages/Meetings.jsx'
 import Events from './pages/Events.jsx'
 import Chatterbox from './pages/Chatterbox.jsx'
 import Contact from './pages/Contact.jsx'
+import AdminLayout from './admin/AdminLayout.jsx'
+import AdminDashboard from './admin/AdminDashboard.jsx'
+import AdminGallery from './admin/AdminGallery.jsx'
+import AdminEvents from './admin/AdminEvents.jsx'
+import AdminMeetings from './admin/AdminMeetings.jsx'
+import AdminNewsletters from './admin/AdminNewsletters.jsx'
+import AdminVideos from './admin/AdminVideos.jsx'
+import AdminClubInfo from './admin/AdminClubInfo.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -25,6 +33,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="gallery/:id" element={<ShipDetail />} />
           <Route path="chatterbox" element={<Chatterbox />} />
           <Route path="contact" element={<Contact />} />
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="gallery" element={<AdminGallery />} />
+          <Route path="events" element={<AdminEvents />} />
+          <Route path="meetings" element={<AdminMeetings />} />
+          <Route path="newsletters" element={<AdminNewsletters />} />
+          <Route path="videos" element={<AdminVideos />} />
+          <Route path="club" element={<AdminClubInfo />} />
         </Route>
       </Routes>
     </HashRouter>

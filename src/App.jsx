@@ -1,4 +1,6 @@
-import { Outlet, NavLink, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Outlet, NavLink, Link, useLocation } from 'react-router-dom'
+import { supabase, isLive } from './lib/supabase.js'
 
 // Nav order matches Anelia's T2 diagram exactly:
 // Landing → About & Membership → Meetings → Events/EXPO → Gallery → Chatterbox
@@ -28,10 +30,20 @@ function ClubBanner({ position = 'top' }) {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+  const isLanding = pathname === '/'
+  const [info, setInfo] = useState(null)
+  useEffect(() => {
+    if (!isLive) return
+    supabase.from('club_info').select('*').eq('id', 1).maybeSingle().then(({ data }) => setInfo(data))
+  }, [])
+
   return (
     <div className="min-h-screen flex flex-col bg-navy-50">
-      {/* Top navy wordmark banner */}
-      <ClubBanner position="top" />
+      {/* Top navy wordmark banner — only on sub-pages.
+          Landing page renders its own banded hero (HeroCollage) which
+          includes the wordmark fused to the image top + bottom. */}
+      {!isLanding && <ClubBanner position="top" />}
 
       {/* Navigation */}
       <header className="bg-white shadow-sm sticky top-0 z-40 border-b border-navy-200">
@@ -87,14 +99,23 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-navy-700">
           <div>
             <h4 className="text-navy-900 text-lg font-display font-bold mb-3">The Club</h4>
-            <p className="text-sm italic text-navy-500">
-              [Placeholder — short club description to be supplied.]
+            <p className="text-sm text-navy-700">
+              {info?.blurb || <em className="text-navy-500">[Short club description — to be supplied by the Club]</em>}
             </p>
+            {info?.members_count != null && (
+              <p className="text-xs text-navy-500 mt-2">{info.members_count} members</p>
+            )}
           </div>
           <div>
             <h4 className="text-navy-900 text-lg font-display font-bold mb-3">Meeting Venue</h4>
-            <p className="text-sm italic text-navy-500">
-              [Placeholder — venue details to be supplied.]
+            <p className="text-sm text-navy-700">
+              {info?.venue_name
+                ? <>
+                    <strong>{info.venue_name}</strong>
+                    {info.venue_address ? <><br />{info.venue_address}</> : null}
+                    {info.meeting_time ? <><br /><em>{info.meeting_time}</em></> : null}
+                  </>
+                : <em className="text-navy-500">[Venue details — to be supplied by the Club]</em>}
             </p>
           </div>
           <div>
