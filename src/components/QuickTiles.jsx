@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom'
+import logoImg       from '../assets/img/smsc_logo_real.png'
+import meetingsImg   from '../assets/img/smsc_header_ships.jpg'
+import galleryImg    from '../assets/img/ship_three_masted.jpg'
+import chatterboxImg from '../assets/img/smsc_chatterbox_masthead.png'
 
 /**
  * T1 Quick Tiles row — per Anelia's diagram.
- * Four navy icon tiles under the hero linking to the four T2 sections:
- *   1. The Club              → /about
- *   2. Calendar / Meetings   → /meetings  (also Events on Anelia's combined tile)
- *   3. Gallery / Modelmakers → /gallery
- *   4. Newsletter Chatterbox → /chatterbox
- * Icons themselves are placeholders until the Club supplies artwork.
+ * Four navy tiles under the hero linking to the four T2 sections.
+ * Each tile shows real imagery matching the section.
  */
 const tiles = [
-  { to: '/about',      label1: 'The Club' },
-  { to: '/meetings',   label1: 'Calendar', label2: 'Meetings / Events' },
-  { to: '/gallery',    label1: 'Gallery',  label2: 'Modelmakers / Models' },
-  { to: '/chatterbox', label1: 'Newsletter', label2: 'Chatterbox' },
+  { to: '/about',      label1: 'The Club',     img: logoImg,        kind: 'logo'  },
+  { to: '/meetings',   label1: 'Calendar',     label2: 'Meetings / Events',     img: meetingsImg,   kind: 'photo' },
+  { to: '/gallery',    label1: 'Gallery',      label2: 'Modelmakers / Models',  img: galleryImg,    kind: 'photo' },
+  { to: '/chatterbox', label1: 'Newsletter',   label2: 'Chatterbox',            img: chatterboxImg, kind: 'photo' },
 ]
 
 export default function QuickTiles() {
@@ -25,27 +25,32 @@ export default function QuickTiles() {
             <Link
               key={t.to}
               to={t.to}
-              className="group bg-navy-800 hover:bg-navy-700 text-white rounded shadow-sm
-                         flex flex-col items-center justify-center text-center
-                         px-3 py-5 md:py-6 border-2 border-brass-500
-                         transition"
+              className="group relative overflow-hidden rounded shadow-sm
+                         border-2 border-brass-500
+                         bg-navy-800 text-white
+                         flex flex-col transition hover:shadow-md hover:-translate-y-0.5"
             >
-              <div
-                className="w-12 h-12 md:w-14 md:h-14 mb-2 rounded
-                           bg-navy-700 border border-brass-400/60
-                           flex items-center justify-center text-brass-300 text-[10px] uppercase tracking-widest"
-                aria-hidden="true"
-              >
-                icon
+              {/* Cover */}
+              <div className={`relative w-full aspect-[4/3] overflow-hidden ${t.kind === 'logo' ? 'bg-white' : 'bg-navy-700'}`}>
+                <img
+                  src={t.img}
+                  alt=""
+                  className={`absolute inset-0 w-full h-full transition duration-500 group-hover:scale-105
+                              ${t.kind === 'logo' ? 'object-contain p-4' : 'object-cover'}`}
+                  loading="lazy"
+                />
               </div>
-              <p className="font-display font-bold text-sm md:text-base leading-tight">
-                {t.label1}
-              </p>
-              {t.label2 && (
-                <p className="text-[11px] md:text-xs text-brass-300 mt-1 leading-tight">
-                  {t.label2}
+              {/* Label band */}
+              <div className="px-3 py-3 text-center bg-navy-800">
+                <p className="font-display font-bold text-sm md:text-base leading-tight">
+                  {t.label1}
                 </p>
-              )}
+                {t.label2 && (
+                  <p className="text-[11px] md:text-xs text-brass-300 mt-1 leading-tight">
+                    {t.label2}
+                  </p>
+                )}
+              </div>
             </Link>
           ))}
         </div>

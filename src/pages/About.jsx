@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase, isLive } from '../lib/supabase.js'
 import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
-import headerImg from '../assets/img/smsc_harbour_banner.jpg'
+import headerImg from '../assets/img/smsc_header_ships.jpg'
 
 /**
  * About the Club & Membership — combined page per Anelia's T2 diagram.
