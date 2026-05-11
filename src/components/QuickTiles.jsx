@@ -13,7 +13,7 @@ const tiles = [
   { to: '/about',      label1: 'The Club',     img: logoImg,        kind: 'logo'  },
   { to: '/meetings',   label1: 'Calendar',     label2: 'Meetings / Events',     img: meetingsImg,   kind: 'photo' },
   { to: '/gallery',    label1: 'Gallery',      label2: 'Modelmakers / Models',  img: galleryImg,    kind: 'photo' },
-  { to: '/chatterbox', label1: 'Newsletter',   label2: 'Chatterbox',            img: chatterboxImg, kind: 'photo' },
+  { to: '/chatterbox', label1: 'Newsletter',   label2: 'Chatterbox',            img: chatterboxImg, kind: 'logo'  },
 ]
 
 export default function QuickTiles() {
