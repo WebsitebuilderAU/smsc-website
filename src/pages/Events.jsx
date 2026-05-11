@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase, isLive } from '../lib/supabase.js'
 import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
+import headerImg from '../assets/img/ship_gilded_stern.jpg'
 
 /**
  * Events & EXPO page — split into EXPO/Workshop/Other (anything not 'Meeting').
@@ -32,7 +33,7 @@ export default function Events() {
 
   return (
     <>
-    <SubpageHeaderImage label="Events & EXPO — header image" />
+    <SubpageHeaderImage label="Events & EXPO" image={headerImg} />
     <section className="max-w-5xl mx-auto px-4 py-12 space-y-12">
       <header>
         <h1 className="text-4xl font-display font-bold text-navy-900">Events &amp; EXPO</h1>

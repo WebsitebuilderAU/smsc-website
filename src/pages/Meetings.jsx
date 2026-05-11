@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase, isLive } from '../lib/supabase.js'
 import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
+import headerImg from '../assets/img/smsc_header_ships.jpg'
 
 /**
  * Meetings page — calendar + venue blocks.
@@ -32,7 +33,7 @@ export default function Meetings() {
 
   return (
     <>
-    <SubpageHeaderImage label="Meetings — header image" />
+    <SubpageHeaderImage label="Meetings" image={headerImg} />
     <section className="max-w-5xl mx-auto px-4 py-12 space-y-12">
       <header>
         <h1 className="text-4xl font-display font-bold text-navy-900">Meetings</h1>

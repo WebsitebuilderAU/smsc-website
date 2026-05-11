@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase, isLive } from '../lib/supabase.js'
 import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
+import headerImg from '../assets/img/smsc_chatterbox_masthead.png'
 
 /**
  * Chatterbox archive — pulls newsletters from Supabase. Newest at top, then
@@ -34,7 +35,7 @@ export default function Chatterbox() {
 
   return (
     <>
-    <SubpageHeaderImage label="Chatterbox — header image" />
+    <SubpageHeaderImage label="Chatterbox" image={headerImg} />
     <section className="max-w-4xl mx-auto px-4 py-12">
       <header>
         <h1 className="text-4xl font-display font-bold text-navy-900">Chatterbox</h1>

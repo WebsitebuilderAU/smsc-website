@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase, isLive } from '../lib/supabase.js'
 import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
+import headerImg from '../assets/img/smsc_harbour_banner.jpg'
 
 /**
  * About the Club & Membership — combined page per Anelia's T2 diagram.
@@ -16,7 +17,7 @@ export default function About() {
 
   return (
     <>
-    <SubpageHeaderImage label="About the Club & Membership — header image" />
+    <SubpageHeaderImage label="About the Club & Membership" image={headerImg} />
     <section className="max-w-4xl mx-auto px-4 py-12 space-y-12">
       <header>
         <h1 className="text-4xl font-display font-bold text-navy-900">About the Club &amp; Membership</h1>
