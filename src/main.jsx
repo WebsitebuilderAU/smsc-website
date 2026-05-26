@@ -18,6 +18,7 @@ import AdminMeetings from './admin/AdminMeetings.jsx'
 import AdminNewsletters from './admin/AdminNewsletters.jsx'
 import AdminVideos from './admin/AdminVideos.jsx'
 import AdminClubInfo from './admin/AdminClubInfo.jsx'
+import AdminContactSubmissions from './admin/AdminContactSubmissions.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -42,6 +43,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="newsletters" element={<AdminNewsletters />} />
           <Route path="videos" element={<AdminVideos />} />
           <Route path="club" element={<AdminClubInfo />} />
+          <Route path="contact" element={<AdminContactSubmissions />} />
         </Route>
       </Routes>
     </HashRouter>

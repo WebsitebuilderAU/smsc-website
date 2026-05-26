@@ -7,7 +7,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     (async () => {
-      const tables = ['gallery_items', 'events', 'newsletters', 'videos', 'meeting_notes']
+      const tables = ['gallery_items', 'events', 'newsletters', 'videos', 'meeting_notes', 'contact_submissions']
       const out = {}
       for (const t of tables) {
         const { count } = await supabase.from(t).select('*', { count: 'exact', head: true })
@@ -24,6 +24,7 @@ export default function AdminDashboard() {
     { to: '/admin/newsletters', label: 'Chatterbox newsletters', count: counts.newsletters,   hint: 'Upload monthly Chatterbox PDFs.' },
     { to: '/admin/videos',      label: 'Videos',                 count: counts.videos,        hint: 'Paste Cloudflare Stream / Vimeo / YouTube embed.' },
     { to: '/admin/club',        label: 'Club Info',              count: '—',                  hint: 'Members count, blurb, venue, meeting time.' },
+    { to: '/admin/contact',     label: 'Contact messages',       count: counts.contact_submissions, hint: 'Messages sent through the website Contact form.' },
   ]
 
   return (

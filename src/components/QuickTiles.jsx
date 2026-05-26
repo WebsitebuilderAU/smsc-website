@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import logoImg       from '../assets/img/smsc_logo_real.png'
 import meetingsImg   from '../assets/img/smsc_header_ships.jpg'
 import galleryImg    from '../assets/img/ship_three_masted.jpg'
 import chatterboxImg from '../assets/img/smsc_chatterbox_masthead.png'
@@ -7,13 +6,15 @@ import chatterboxImg from '../assets/img/smsc_chatterbox_masthead.png'
 /**
  * T1 Quick Tiles row — per Anelia's diagram.
  * Four navy tiles under the hero linking to the four T2 sections.
- * Each tile shows real imagery matching the section.
+ * The Club tile is a wordmark card (no logo/photo) to avoid duplicating
+ * the SMSC mark that's already in the hero banner above. A club photo
+ * can be dropped in later when the Club supplies one.
  */
 const tiles = [
-  { to: '/about',      label1: 'The Club',     img: logoImg,        kind: 'logo'  },
-  { to: '/meetings',   label1: 'Calendar',     label2: 'Meetings / Events',     img: meetingsImg,   kind: 'photo' },
-  { to: '/gallery',    label1: 'Gallery',      label2: 'Modelmakers / Models',  img: galleryImg,    kind: 'photo' },
-  { to: '/chatterbox', label1: 'Newsletter',   label2: 'Chatterbox',            img: chatterboxImg, kind: 'logo'  },
+  { to: '/about',      label1: 'About',        label2: 'The Club & Membership',  kind: 'wordmark' },
+  { to: '/meetings',   label1: 'Calendar',     label2: 'Meetings / Events',      img: meetingsImg,   kind: 'photo' },
+  { to: '/gallery',    label1: 'Gallery',      label2: 'Modelmakers / Models',   img: galleryImg,    kind: 'photo' },
+  { to: '/chatterbox', label1: 'Newsletter',   label2: 'Chatterbox',             img: chatterboxImg, kind: 'logo'  },
 ]
 
 export default function QuickTiles() {
@@ -31,15 +32,30 @@ export default function QuickTiles() {
                          flex flex-col transition hover:shadow-md hover:-translate-y-0.5"
             >
               {/* Cover */}
-              <div className={`relative w-full aspect-[4/3] overflow-hidden ${t.kind === 'logo' ? 'bg-white' : 'bg-navy-700'}`}>
-                <img
-                  src={t.img}
-                  alt=""
-                  className={`absolute inset-0 w-full h-full transition duration-500 group-hover:scale-105
-                              ${t.kind === 'logo' ? 'object-contain p-4' : 'object-cover'}`}
-                  loading="lazy"
-                />
-              </div>
+              {t.kind === 'wordmark' ? (
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-navy-800 flex items-center justify-center">
+                  {/* Subtle brass corner accents to echo the brand frame */}
+                  <div className="absolute inset-3 border border-brass-500/40 rounded"></div>
+                  <div className="text-center px-4">
+                    <p className="font-display font-bold text-2xl md:text-3xl text-white leading-tight">
+                      SMSC
+                    </p>
+                    <p className="text-[10px] md:text-xs text-brass-300 mt-2 tracking-widest uppercase">
+                      Est. Sydney
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className={`relative w-full aspect-[4/3] overflow-hidden ${t.kind === 'logo' ? 'bg-white' : 'bg-navy-700'}`}>
+                  <img
+                    src={t.img}
+                    alt=""
+                    className={`absolute inset-0 w-full h-full transition duration-500 group-hover:scale-105
+                                ${t.kind === 'logo' ? 'object-contain p-4' : 'object-cover'}`}
+                    loading="lazy"
+                  />
+                </div>
+              )}
               {/* Label band */}
               <div className="px-3 py-3 text-center bg-navy-800">
                 <p className="font-display font-bold text-sm md:text-base leading-tight">

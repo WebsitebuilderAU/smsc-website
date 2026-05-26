@@ -11,6 +11,7 @@ const adminNav = [
   { to: '/admin/newsletters', label: 'Chatterbox' },
   { to: '/admin/videos',      label: 'Videos' },
   { to: '/admin/club',        label: 'Club Info' },
+  { to: '/admin/contact',     label: 'Contact messages' },
 ]
 
 export default function AdminLayout() {
