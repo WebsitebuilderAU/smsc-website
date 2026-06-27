@@ -12,17 +12,18 @@ export default function SubpageHeaderImage({ label, image }) {
   const { pathname } = useLocation()
   const showHome = pathname !== '/'
 
+  // Home return — ring around www.smsc.org.au per Anelia's 6 June revision
   const HomeButton = () => (
     showHome ? (
       <Link
         to="/"
-        className="inline-flex items-center gap-1.5 text-white text-xs md:text-sm font-semibold
-                   px-3 py-1.5 rounded-full border border-white/80 hover:border-white
-                   bg-navy-900/40 hover:bg-navy-900/60 backdrop-blur-sm transition
+        className="inline-flex items-center gap-2 text-white text-xs md:text-sm font-semibold tracking-wide
+                   px-4 py-2 rounded-full border-2 border-brass-500 hover:border-white
+                   bg-navy-900/50 hover:bg-navy-900/70 backdrop-blur-sm transition
                    focus:outline-none focus:ring-2 focus:ring-brass-500 focus:ring-offset-1"
-        aria-label="Back to Home"
+        aria-label="Back to Home — www.smsc.org.au"
       >
-        <span aria-hidden="true">←</span> Home
+        <span aria-hidden="true">⌂</span> www.smsc.org.au
       </Link>
     ) : null
   )
@@ -64,11 +65,11 @@ export default function SubpageHeaderImage({ label, image }) {
       <div className="max-w-7xl mx-auto px-4 pt-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-navy-800 text-xs md:text-sm font-semibold
-                     px-3 py-1.5 rounded-full border border-navy-800 hover:bg-navy-800 hover:text-white transition"
-          aria-label="Back to Home"
+          className="inline-flex items-center gap-2 text-navy-900 text-xs md:text-sm font-semibold tracking-wide
+                     px-4 py-2 rounded-full border-2 border-navy-800 hover:bg-navy-800 hover:text-white transition"
+          aria-label="Back to Home — www.smsc.org.au"
         >
-          <span aria-hidden="true">←</span> Home
+          <span aria-hidden="true">⌂</span> www.smsc.org.au
         </Link>
       </div>
       <div className="text-center px-4 py-10 text-navy-400 text-xs uppercase tracking-widest">

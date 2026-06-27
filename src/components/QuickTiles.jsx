@@ -3,6 +3,7 @@ import meetingsImg   from '../assets/img/smsc_header_ships.jpg'
 import galleryImg    from '../assets/img/ship_three_masted.jpg'
 import chatterboxImg from '../assets/img/smsc_chatterbox_masthead.png'
 import eventsImg     from '../assets/img/ship_gilded_stern.jpg'
+import aboutImg      from '../assets/img/smsc_ships_only.jpg'
 
 /**
  * T1 Quick Tiles row — per Anelia's diagram (revised 6 June 2026).
@@ -10,7 +11,7 @@ import eventsImg     from '../assets/img/ship_gilded_stern.jpg'
  * Whole tile is a Link, so the full square is clickable (not just the label).
  */
 const tiles = [
-  { to: '/about',      label1: 'About',        label2: 'The Club & Membership',  kind: 'wordmark' },
+  { to: '/about',      label1: 'About',        label2: 'The Club & Membership',  img: aboutImg,      kind: 'photo' },
   { to: '/meetings',   label1: 'Calendar',     label2: 'Meetings',               img: meetingsImg,   kind: 'photo' },
   { to: '/events',     label1: 'Events',       label2: 'EXPO / Workshops',       img: eventsImg,     kind: 'photo' },
   { to: '/gallery',    label1: 'Gallery',      label2: 'Modelmakers / Models',   img: galleryImg,    kind: 'photo' },
