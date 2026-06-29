@@ -1,138 +1,156 @@
-import { useEffect, useState } from 'react'
-import { Outlet, NavLink, Link, useLocation } from 'react-router-dom'
-import { supabase, isLive } from './lib/supabase.js'
+import { Outlet, Link, useLocation } from 'react-router-dom'
 
-// Nav order matches Anelia's T2 diagram exactly:
-// Landing → About & Membership → Meetings → Events/EXPO → Gallery → Chatterbox
-const nav = [
-  { to: '/',             label: 'Home' },
-  { to: '/about',        label: 'About & Membership' },
-  { to: '/meetings',     label: 'Meetings' },
-  { to: '/events',       label: 'Events & EXPO' },
-  { to: '/gallery',      label: 'Gallery' },
-  { to: '/chatterbox',   label: 'Chatterbox' },
-  { to: '/contact',      label: 'Contact' },
+// Bottom nav pill definitions — per Anelia's PDF bottom band
+const NAV_PILLS = [
+  { to: '/about',       line1: 'The Club',    line2: 'About / Membership' },
+  { to: '/meetings',    line1: 'Calendar',    line2: 'Meetings' },
+  { to: '/events',      line1: 'Events',      line2: 'Annual Festival EXPO' },
+  { to: '/gallery',     line1: 'Gallery',     line2: 'Modelmakers Models' },
+  { to: '/chatterbox',  line1: 'Newsletter',  line2: 'Chatterbox' },
 ]
 
-function ClubBanner({ position = 'top' }) {
-  // The solid navy bar with the club wordmark, wrapping top & bottom of every page
-  // as per Anelia's layout diagram.
+// Gold wordmark rendered twice stacked — per Anelia's PDF
+function GoldWordmark() {
+  return (
+    <div className="text-center leading-none select-none" aria-label="Sydney Model Shipbuilders Club">
+      <div className="smsc-wordmark">SYDNEY MODEL SHIPBUILDERS CLUB</div>
+      <div className="smsc-wordmark">SYDNEY MODEL SHIPBUILDERS CLUB</div>
+    </div>
+  )
+}
+
+// The full top chrome band — www pill + gold wordmark + SMSC logos in corners
+function TopBand({ subtitle }) {
   return (
     <div
-      className={`bg-navy-800 text-white tracking-widest text-center font-display
-        ${position === 'top' ? 'border-b-2 border-brass-500' : 'border-t-2 border-brass-500'}`}
+      className="w-full relative"
+      style={{ background: '#0b1f31' }}
     >
-      <div className="max-w-7xl mx-auto px-4 py-2 text-sm md:text-base font-semibold uppercase">
-        Sydney Model Shipbuilders Club
+      {/* SMSC logo — top left */}
+      <div className="absolute left-2 top-1/2 -translate-y-1/2 z-10">
+        <img
+          src="/images/smsc_logo.png"
+          alt="SMSC logo"
+          className="h-16 md:h-20 w-auto"
+          loading="eager"
+        />
+      </div>
+
+      {/* SMSC logo — top right */}
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 z-10">
+        <img
+          src="/images/smsc_logo.png"
+          alt="SMSC logo"
+          className="h-16 md:h-20 w-auto"
+          loading="eager"
+        />
+      </div>
+
+      {/* Centre content: www pill + wordmark + subtitle */}
+      <div className="flex flex-col items-center px-28 pt-2 pb-2">
+        {/* www.smsc.org.au pill */}
+        <Link
+          to="/"
+          className="smsc-www-pill"
+          aria-label="Home — www.smsc.org.au"
+        >
+          www.smsc.org.au
+        </Link>
+
+        {/* Double-line gold wordmark */}
+        <GoldWordmark />
+
+        {/* Page subtitle — blank on home */}
+        {subtitle && (
+          <p className="text-white text-center font-semibold text-lg md:text-xl mt-1 mb-1">
+            {subtitle}
+          </p>
+        )}
       </div>
     </div>
   )
 }
 
-export default function App() {
-  const { pathname } = useLocation()
-  const isLanding = pathname === '/'
-  const [info, setInfo] = useState(null)
-  useEffect(() => {
-    if (!isLive) return
-    supabase.from('club_info').select('*').eq('id', 1).maybeSingle().then(({ data }) => setInfo(data))
-  }, [])
+// Bottom navy band: 5 red-outlined pill nav buttons + email + gold wordmark
+function BottomBand() {
+  const { hash } = useLocation()
+  const activePath = hash.replace('#', '') || '/'
 
   return (
-    <div className="min-h-screen flex flex-col bg-navy-50">
-      {/* Top navy wordmark banner — only on sub-pages.
-          Landing page renders its own banded hero (HeroCollage) which
-          includes the wordmark fused to the image top + bottom. */}
-      {!isLanding && <ClubBanner position="top" />}
-
-      {/* Navigation */}
-      <header className="bg-white shadow-sm sticky top-0 z-40 border-b border-navy-200">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center">
-            <span className="font-display text-navy-900 leading-tight">
-              <span className="block font-bold text-base md:text-lg">Sydney Model Shipbuilders Club</span>
-            </span>
-          </Link>
-          <nav className="hidden md:flex gap-1">
-            {nav.map(n => (
-              <NavLink
-                key={n.to}
-                to={n.to}
-                end={n.to === '/'}
-                className={({isActive}) =>
-                  `px-3 py-2 rounded text-sm font-medium transition ${
-                    isActive
-                      ? 'bg-navy-800 text-white'
-                      : 'text-navy-800 hover:bg-navy-100'
-                  }`
-                }
-              >
-                {n.label}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
-        <nav className="md:hidden border-t border-navy-100 px-2 py-2 overflow-x-auto flex gap-1 text-sm">
-          {nav.map(n => (
-            <NavLink
-              key={n.to}
-              to={n.to}
-              end={n.to === '/'}
-              className={({isActive}) =>
-                `whitespace-nowrap px-3 py-1 rounded ${
-                  isActive ? 'bg-navy-800 text-white' : 'text-navy-800'
-                }`
-              }
+    <div style={{ background: '#0b1f31' }}>
+      {/* 5 nav pills + email row */}
+      <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 px-4 py-3">
+        {NAV_PILLS.map(p => {
+          const isActive = activePath === p.to || activePath.startsWith(p.to + '/')
+          return (
+            <Link
+              key={p.to}
+              to={p.to}
+              className={`smsc-nav-pill${isActive ? ' smsc-nav-pill--active' : ''}`}
             >
-              {n.label}
-            </NavLink>
-          ))}
-        </nav>
-      </header>
+              <span className="block text-center leading-tight">
+                <span className="block">{p.line1}</span>
+                <span className="block">{p.line2}</span>
+              </span>
+            </Link>
+          )
+        })}
 
+        {/* Email — right-aligned on larger screens */}
+        <div className="w-full md:w-auto md:ml-4 text-center md:text-right text-white text-sm">
+          <span className="font-semibold">Email Us: </span>
+          <a
+            href="mailto:info@smsc.org.au"
+            className="underline hover:text-yellow-300 transition-colors"
+          >
+            info@smsc.org.au
+          </a>
+        </div>
+      </div>
+
+      {/* Mirror gold wordmark at bottom */}
+      <div className="pb-2">
+        <GoldWordmark />
+      </div>
+    </div>
+  )
+}
+
+// Page-level subtitle map — keyed by route path prefix
+const PAGE_SUBTITLES = {
+  '/about':      'About The Club and Membership',
+  '/meetings':   'Calendar - SMSC has Monthly Meetings',
+  '/events':     'Events',
+  '/gallery':    'Modelmakers Models',
+  '/chatterbox': 'Newsletter - Chatterbox',
+  '/events/expo': 'Festival Of Model Shipbuilding - EXPO',
+}
+
+function useSubtitle() {
+  const { hash } = useLocation()
+  const path = hash.replace('#', '') || '/'
+  // Longest matching prefix wins
+  const match = Object.keys(PAGE_SUBTITLES)
+    .filter(k => path === k || path.startsWith(k + '/'))
+    .sort((a, b) => b.length - a.length)[0]
+  return match ? PAGE_SUBTITLES[match] : ''
+}
+
+export default function App() {
+  const subtitle = useSubtitle()
+
+  return (
+    <div className="min-h-screen flex flex-col" style={{ background: '#f8f6f0' }}>
+      {/* Top chrome band */}
+      <TopBand subtitle={subtitle} />
+
+      {/* Page content */}
       <main className="flex-1">
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-navy-50 border-t border-navy-200 mt-12">
-        <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-navy-700">
-          <div>
-            <h4 className="text-navy-900 text-lg font-display font-bold mb-3">The Club</h4>
-            <p className="text-sm text-navy-700">
-              {info?.blurb || <em className="text-navy-500">[Short club description — to be supplied by the Club]</em>}
-            </p>
-            {info?.members_count != null && (
-              <p className="text-xs text-navy-500 mt-2">{info.members_count} members</p>
-            )}
-          </div>
-          <div>
-            <h4 className="text-navy-900 text-lg font-display font-bold mb-3">Meeting Venue</h4>
-            <p className="text-sm text-navy-700">
-              {info?.venue_name
-                ? <>
-                    <strong>{info.venue_name}</strong>
-                    {info.venue_address ? <><br />{info.venue_address}</> : null}
-                    {info.meeting_time ? <><br /><em>{info.meeting_time}</em></> : null}
-                  </>
-                : <em className="text-navy-500">[Venue details — to be supplied by the Club]</em>}
-            </p>
-          </div>
-          <div>
-            <h4 className="text-navy-900 text-lg font-display font-bold mb-3">Contact</h4>
-            <p className="text-sm">
-              <Link to="/contact" className="underline hover:text-brass-600">Send us a message →</Link>
-            </p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Bottom navy wordmark banner (mirrors top — per Anelia's layout) */}
-      <ClubBanner position="bottom" />
-
-      <div className="bg-navy-900 text-xs text-center py-3 text-navy-400">
-        © {new Date().getFullYear()} Sydney Model Shipbuilders Club
-      </div>
+      {/* Bottom chrome band */}
+      <BottomBand />
     </div>
   )
 }

@@ -2,20 +2,17 @@ import { useEffect, useMemo, useState } from 'react'
 import { galleryStub } from '../data/galleryStub.js'
 import { supabase, isLive } from '../lib/supabase.js'
 import ShipTile from '../components/ShipTile.jsx'
-import SubpageHeaderImage from '../components/SubpageHeaderImage.jsx'
-import headerImg from '../assets/img/ship_three_masted.jpg'
 
 /**
- * T2 → T3 Gallery.
- * Anelia's spec: "Database: list of model ship names and model maker with photos
- * of each model and text about the making of the model... Need to be able to
- * 'word' search to locate information."
+ * Gallery — Modelmakers Models.
+ * Searchable by ship name, builder, or keyword.
+ * Subtitle ("Modelmakers Models") is handled by the App.jsx chrome band.
  */
 export default function Gallery() {
-  const [items, setItems]         = useState(galleryStub)
-  const [query, setQuery]         = useState('')
-  const [shipType, setShipType]   = useState('all')
-  const [year, setYear]           = useState('all')
+  const [items, setItems]       = useState(galleryStub)
+  const [query, setQuery]       = useState('')
+  const [shipType, setShipType] = useState('all')
+  const [year, setYear]         = useState('all')
 
   useEffect(() => {
     if (!isLive) return
@@ -55,29 +52,26 @@ export default function Gallery() {
   })
 
   return (
-    <>
-    <SubpageHeaderImage label="Gallery — Model Ships" image={headerImg} />
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-display font-bold text-navy-900">Gallery — Model Ships</h1>
-      <p className="mt-3 text-navy-700 max-w-3xl">
-        Searchable database of member builds. Filter by ship type or year,
+    <section className="max-w-7xl mx-auto px-4 py-10">
+      <p className="mt-1 text-navy-700 max-w-3xl mb-6">
+        Searchable archive of member builds. Filter by ship type or year,
         or word-search by ship name or model maker.
       </p>
 
       {!isLive && (
-        <div className="mt-6 rounded bg-brass-500/10 border border-brass-500/30 text-sm text-navy-800 p-4">
+        <div className="mb-6 rounded bg-amber-50 border border-amber-200 text-sm text-navy-800 p-4">
           Gallery placeholders shown. The full archive will appear here once
           the club's photos and build records are loaded.
         </div>
       )}
 
-      <div className="mt-8 grid sm:grid-cols-3 gap-3">
+      <div className="grid sm:grid-cols-3 gap-3 mb-8">
         <input
           type="search"
           placeholder="Word search — ship name, builder, keyword…"
           value={query}
           onChange={e => setQuery(e.target.value)}
-          className="px-4 py-2 rounded border border-navy-200 focus:outline-none focus:ring-2 focus:ring-brass-500"
+          className="px-4 py-2 rounded border border-navy-200 focus:outline-none focus:ring-2 focus:ring-red-500"
         />
         <select
           value={shipType}
@@ -95,7 +89,7 @@ export default function Gallery() {
         </select>
       </div>
 
-      <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filtered.map(item => <ShipTile key={item.id} item={item} />)}
         {filtered.length === 0 && (
           <p className="col-span-full text-center text-navy-500 py-12">
@@ -104,6 +98,5 @@ export default function Gallery() {
         )}
       </div>
     </section>
-    </>
   )
 }

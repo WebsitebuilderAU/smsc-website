@@ -8,6 +8,8 @@ import Gallery from './pages/Gallery.jsx'
 import ShipDetail from './pages/ShipDetail.jsx'
 import Meetings from './pages/Meetings.jsx'
 import Events from './pages/Events.jsx'
+import Expo from './pages/Expo.jsx'
+import ExpoYear from './pages/ExpoYear.jsx'
 import Chatterbox from './pages/Chatterbox.jsx'
 import Contact from './pages/Contact.jsx'
 import AdminLayout from './admin/AdminLayout.jsx'
@@ -30,6 +32,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="about" element={<About />} />
           <Route path="meetings" element={<Meetings />} />
           <Route path="events" element={<Events />} />
+          <Route path="events/expo" element={<Expo />} />
+          <Route path="events/expo/:year" element={<ExpoYear />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="gallery/:id" element={<ShipDetail />} />
           <Route path="chatterbox" element={<Chatterbox />} />
