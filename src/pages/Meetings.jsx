@@ -90,7 +90,7 @@ export default function Meetings() {
           <div className="space-y-3">
             <div className="overflow-hidden rounded shadow-sm border border-navy-200">
               <img
-                src="/images/anelia-28jun/IMG_7369.jpeg"
+                src="./images/anelia-28jun/IMG_7369.jpeg"
                 alt="Club meeting at Wests Ashfield"
                 className="w-full h-40 object-cover block"
                 loading="eager"
@@ -98,7 +98,7 @@ export default function Meetings() {
             </div>
             <div className="overflow-hidden rounded shadow-sm border border-navy-200">
               <img
-                src="/images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg"
+                src="./images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg"
                 alt="Club meeting — members sharing models"
                 className="w-full h-40 object-cover block"
                 loading="lazy"
@@ -140,7 +140,7 @@ export default function Meetings() {
           <div className="space-y-3">
             <div className="overflow-hidden rounded shadow-sm border border-navy-200">
               <img
-                src="/images/anelia-28jun/IMG_7518.jpeg"
+                src="./images/anelia-28jun/IMG_7518.jpeg"
                 alt="Meeting at a member's home"
                 className="w-full h-40 object-cover block"
                 loading="lazy"
@@ -148,7 +148,7 @@ export default function Meetings() {
             </div>
             <div className="overflow-hidden rounded shadow-sm border border-navy-200">
               <img
-                src="/images/anelia-28jun/IMG_8005.jpeg"
+                src="./images/anelia-28jun/IMG_8005.jpeg"
                 alt="Members discussing models at home meeting"
                 className="w-full h-40 object-cover block"
                 loading="lazy"

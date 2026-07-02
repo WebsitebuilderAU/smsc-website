@@ -30,7 +30,7 @@ export default function Chatterbox() {
       {/* Big Chatterbox masthead — full width */}
       <div className="mb-5">
         <img
-          src="/images/smsc_chatterbox_masthead.png"
+          src="./images/smsc_chatterbox_masthead.png"
           alt="SMSC Chatterbox newsletter masthead"
           className="w-full max-w-2xl mx-auto block rounded shadow-sm border border-navy-200"
           loading="eager"
@@ -72,7 +72,7 @@ export default function Chatterbox() {
             {/* Masthead thumbnail */}
             <div className="aspect-[3/2] bg-navy-50 overflow-hidden">
               <img
-                src="/images/smsc_chatterbox_masthead.png"
+                src="./images/smsc_chatterbox_masthead.png"
                 alt=""
                 className="w-full h-full object-cover group-hover:scale-105 transition"
                 loading="lazy"

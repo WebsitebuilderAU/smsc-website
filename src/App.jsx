@@ -9,11 +9,10 @@ const NAV_PILLS = [
   { to: '/chatterbox',  line1: 'Newsletter',  line2: 'Chatterbox' },
 ]
 
-// Gold wordmark rendered twice stacked — per Anelia's PDF
+// Gold wordmark — single line (per Andrew's direction)
 function GoldWordmark() {
   return (
     <div className="text-center leading-none select-none" aria-label="Sydney Model Shipbuilders Club">
-      <div className="smsc-wordmark">SYDNEY MODEL SHIPBUILDERS CLUB</div>
       <div className="smsc-wordmark">SYDNEY MODEL SHIPBUILDERS CLUB</div>
     </div>
   )
@@ -24,22 +23,22 @@ function TopBand({ subtitle }) {
   return (
     <div
       className="w-full relative"
-      style={{ background: '#0b1f31' }}
+      style={{ background: '#253f8e' }}
     >
-      {/* SMSC logo — top left */}
-      <div className="absolute left-2 top-1/2 -translate-y-1/2 z-10">
+      {/* SMSC logo — top left (hidden on mobile) */}
+      <div className="hidden sm:block absolute left-3 top-1/2 -translate-y-1/2 z-10 smsc-logo-badge">
         <img
-          src="/images/smsc_logo.png"
+          src="./images/smsc_logo.png"
           alt="SMSC logo"
           className="h-16 md:h-20 w-auto"
           loading="eager"
         />
       </div>
 
-      {/* SMSC logo — top right */}
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 z-10">
+      {/* SMSC logo — top right (hidden on mobile) */}
+      <div className="hidden sm:block absolute right-3 top-1/2 -translate-y-1/2 z-10 smsc-logo-badge">
         <img
-          src="/images/smsc_logo.png"
+          src="./images/smsc_logo.png"
           alt="SMSC logo"
           className="h-16 md:h-20 w-auto"
           loading="eager"
@@ -47,7 +46,7 @@ function TopBand({ subtitle }) {
       </div>
 
       {/* Centre content: www pill + wordmark + subtitle */}
-      <div className="flex flex-col items-center px-28 pt-2 pb-2">
+      <div className="flex flex-col items-center px-3 sm:px-28 pt-4 pb-4">
         {/* www.smsc.org.au pill */}
         <Link
           to="/"
@@ -77,9 +76,14 @@ function BottomBand() {
   const activePath = hash.replace('#', '') || '/'
 
   return (
-    <div style={{ background: '#0b1f31' }}>
+    <div style={{ background: '#253f8e' }}>
+      {/* Gold serif SMSC wordmark repeated on the bottom navy band */}
+      <div className="flex justify-center pt-1 pb-0 px-3">
+        <GoldWordmark />
+      </div>
+
       {/* 5 nav pills + email row */}
-      <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 px-4 py-3">
+      <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 px-4 pt-1 pb-2">
         {NAV_PILLS.map(p => {
           const isActive = activePath === p.to || activePath.startsWith(p.to + '/')
           return (
@@ -108,10 +112,6 @@ function BottomBand() {
         </div>
       </div>
 
-      {/* Mirror gold wordmark at bottom */}
-      <div className="pb-2">
-        <GoldWordmark />
-      </div>
     </div>
   )
 }
@@ -140,12 +140,13 @@ export default function App() {
   const subtitle = useSubtitle()
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#f8f6f0' }}>
+    <div className="min-h-screen flex flex-col" style={{ background: '#253f8e' }}>
       {/* Top chrome band */}
       <TopBand subtitle={subtitle} />
 
-      {/* Page content */}
-      <main className="flex-1">
+      {/* Page content — main fills remaining viewport height. Home stretches its collage
+         to fill this space (Option A); other pages ride on their own cream background. */}
+      <main className="flex flex-col flex-1 min-h-0">
         <Outlet />
       </main>
 

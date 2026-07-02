@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom'
  */
 
 const EVENT_PHOTOS = [
-  { src: '/images/anelia-28jun/IMG_1327.jpeg',      alt: 'EXPO display hall — tables of models' },
-  { src: '/images/anelia-28jun/IMG_0059_copy.jpeg', alt: 'Visitors viewing ship models' },
-  { src: '/images/anelia-28jun/IMG_8784.jpeg',      alt: 'Close-up of model ships on display' },
+  { src: './images/anelia-28jun/IMG_1327.jpeg',      alt: 'EXPO display hall — tables of models' },
+  { src: './images/anelia-28jun/IMG_0059_copy.jpeg', alt: 'Visitors viewing ship models' },
+  { src: './images/anelia-28jun/IMG_8784.jpeg',      alt: 'Close-up of model ships on display' },
 ]
 
 export default function Events() {
@@ -22,7 +22,7 @@ export default function Events() {
         {/* Left — 2026 EXPO poster */}
         <div>
           <img
-            src="/images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg"
+            src="./images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg"
             alt="EXPO 2026 — The Sydney Festival of Model Shipbuilding poster"
             className="w-full rounded shadow-md border border-navy-200"
             loading="eager"

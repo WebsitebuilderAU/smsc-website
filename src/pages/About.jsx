@@ -15,16 +15,16 @@ const BODY_PARAGRAPHS = [
 
 // Left-column photos — club meeting/event shots
 const LEFT_PHOTOS = [
-  { src: '/images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg', alt: 'Club meeting compilation' },
-  { src: '/images/anelia-28jun/IMG_6436.jpeg', alt: 'Club members working on a model' },
-  { src: '/images/anelia-28jun/IMG_7518.jpeg', alt: 'Members gathering' },
+  { src: './images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg', alt: 'Club meeting compilation' },
+  { src: './images/anelia-28jun/IMG_6436.jpeg', alt: 'Club members working on a model' },
+  { src: './images/anelia-28jun/IMG_7518.jpeg', alt: 'Members gathering' },
 ]
 
 // Right-column photos — model ship shots
 const RIGHT_PHOTOS = [
-  { src: '/images/anelia-28jun/Images_on_Brochure_for_Info_Page_.jpeg', alt: 'Models on brochure' },
-  { src: '/images/anelia-28jun/IMG_7369.jpeg', alt: 'Meeting with ship models' },
-  { src: '/images/anelia-28jun/IMG_8005.jpeg', alt: 'Detailed model ship' },
+  { src: './images/anelia-28jun/Images_on_Brochure_for_Info_Page_.jpeg', alt: 'Models on brochure' },
+  { src: './images/anelia-28jun/IMG_7369.jpeg', alt: 'Meeting with ship models' },
+  { src: './images/anelia-28jun/IMG_8005.jpeg', alt: 'Detailed model ship' },
 ]
 
 export default function About() {
@@ -48,7 +48,7 @@ export default function About() {
           {/* SMSC logo at bottom of left column — matches PDF */}
           <div className="mt-2 flex justify-center">
             <img
-              src="/images/smsc_logo.png"
+              src="./images/smsc_logo.png"
               alt="Sydney Model Shipbuilders Club Inc"
               className="h-28 w-auto"
               loading="lazy"

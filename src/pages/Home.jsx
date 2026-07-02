@@ -1,100 +1,100 @@
 import { Link } from 'react-router-dom'
 
-// All ship images used in the home collage
-const COLLAGE_IMAGES = [
-  { src: '/images/anelia-28jun/IMG_6436.jpeg',   alt: 'Club model ship' },
-  { src: '/images/anelia-28jun/IMG_7369.jpeg',   alt: 'Club meeting with models' },
-  { src: '/images/anelia-28jun/IMG_7518.jpeg',   alt: 'Members working on models' },
-  { src: '/images/anelia-28jun/IMG_8005.jpeg',   alt: 'Detailed model ship hull' },
-  { src: '/images/anelia-28jun/IMG_8784.jpeg',   alt: 'Models on display' },
-  { src: '/images/anelia-28jun/IMG_0059_copy.jpeg', alt: 'Model ship close-up' },
-  { src: '/images/anelia-28jun/IMG_1327.jpeg',   alt: 'EXPO display hall' },
-  { src: '/images/anelia-28jun/Images_on_Brochure_for_Info_Page_.jpeg', alt: 'Brochure models' },
-  { src: '/images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg', alt: 'Club info photos' },
-  { src: '/images/ship_gilded_stern.jpg',          alt: 'Gilded stern model' },
-  { src: '/images/ship_three_masted.jpg',          alt: 'Three-masted sailing ship model' },
-  { src: '/images/smsc_harbour_banner.jpg',        alt: 'SMSC harbour banner' },
-]
+// Home page — matches Anelia's mockup exactly.
+//  - Full-width collage image (cropped to remove top blue strip)
+//  - Clickable hotspots over the four bottom cards + big ship mast for gallery
+//  - Five red-outlined rectangular pill cards with square thumbnails below (tight to collage)
 
-// 5 home tiles — matching Anelia's PDF T1 tiles with thumbnail + two-line label
-const HOME_TILES = [
+// Rectangular pill cards — exact labels from Anelia's mockup
+const PILLS = [
   {
     to: '/about',
-    thumb: '/images/smsc_logo.png',
+    thumb: './images/smsc_logo.png',
     line1: 'The Club',
     line2: 'About / Membership',
+    alt: 'SMSC logo',
   },
   {
     to: '/meetings',
-    thumb: '/images/anelia-28jun/IMG_7369.jpeg',
+    thumb: './images/hero_ship_2.png',
     line1: 'Calendar',
     line2: 'Meetings',
+    alt: 'Model ship',
   },
   {
-    to: '/events',
-    thumb: '/images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg',
+    to: '/events/expo',
+    thumb: './images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg',
     line1: 'Events',
     line2: 'Annual Festival EXPO',
+    alt: 'EXPO poster',
   },
   {
     to: '/gallery',
-    thumb: '/images/anelia-28jun/IMG_8005.jpeg',
+    thumb: './images/hero_ship_1.png',
     line1: 'Gallery',
     line2: 'Modelmakers Models',
+    alt: 'Model ship',
   },
   {
     to: '/chatterbox',
-    thumb: '/images/smsc_chatterbox_masthead.png',
+    thumb: './images/smsc_chatterbox_masthead.png',
     line1: 'Newsletter',
     line2: 'Chatterbox',
+    alt: 'Chatterbox masthead',
   },
+]
+
+// Clickable hotspots over the collage. Coordinates are percent of the collage image
+// (2000x746 after cropping the top blue strip).
+const HOTSPOTS = [
+  { to: '/about',      left: '4.2%',  top: '50.9%', width: '11.6%', height: '45.6%', label: 'The Club — About' },
+  { to: '/about',      left: '17.2%', top: '57.6%', width: '11.5%', height: '36.2%', label: 'Club members' },
+  { to: '/events/expo',left: '30.2%', top: '57.6%', width: '11.3%', height: '38.9%', label: 'EXPO 2026 flyer' },
+  { to: '/gallery',    left: '42.5%', top: '38.9%', width: '16.5%', height: '57.6%', label: 'Model ship gallery' },
+  { to: '/chatterbox', left: '60.5%', top: '57.6%', width: '11.3%', height: '38.9%', label: 'Chatterbox newsletter' },
+  // Big top ship area — link to gallery
+  { to: '/gallery',    left: '0%',    top: '0%',    width: '100%',  height: '38%',  label: 'Model ships gallery' },
 ]
 
 export default function Home() {
   return (
-    <>
-      {/* Hero collage — freeform CSS grid, no white gaps */}
-      <section className="home-collage" aria-label="Model ship photo collage">
-        {COLLAGE_IMAGES.map((img, i) => (
-          <div key={i} className={`home-collage__cell home-collage__cell--${i + 1}`}>
-            <img
-              src={img.src}
-              alt={img.alt}
-              loading={i < 4 ? 'eager' : 'lazy'}
-              className="w-full h-full object-cover block"
+    <div className="smsc-home">
+      {/* Full-width collage with clickable hotspots over cards and ship gallery */}
+      <section className="smsc-home__collage-wrap" aria-label="Model ships and club highlights">
+        <div className="smsc-home__collage-inner">
+          <img
+            src="./images/anelia_home_collage_v2.jpg"
+            alt="Sydney Model Shipbuilders Club — member ships, EXPO 2026 flyer, Chatterbox newsletter, club members"
+            className="smsc-home__collage-img"
+          />
+          {HOTSPOTS.map((h, i) => (
+            <Link
+              key={i}
+              to={h.to}
+              aria-label={h.label}
+              className="smsc-home__hotspot"
+              style={{ left: h.left, top: h.top, width: h.width, height: h.height }}
             />
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
-      {/* 5 large red-bordered pill tiles — mirror of bottom nav but bigger */}
-      <section
-        className="py-6 px-4"
-        style={{ background: '#f8f6f0' }}
-        aria-label="Site sections"
-      >
-        <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-          {HOME_TILES.map(tile => (
-            <Link
-              key={tile.to}
-              to={tile.to}
-              className="home-tile"
-              aria-label={`${tile.line1} — ${tile.line2}`}
-            >
-              <img
-                src={tile.thumb}
-                alt=""
-                className="home-tile__thumb"
-                loading="lazy"
-              />
-              <span className="home-tile__label">
-                <span className="block font-bold">{tile.line1}</span>
-                <span className="block font-semibold">{tile.line2}</span>
+      {/* Rectangular red-outlined pill cards with square thumbnails — sit tight to collage */}
+      <section className="smsc-home__pills" aria-label="Explore the club">
+        <div className="smsc-home__pills-grid">
+          {PILLS.map((pill) => (
+            <Link key={pill.to} to={pill.to} className="smsc-home__pill">
+              <span className="smsc-home__pill-thumb">
+                <img src={pill.thumb} alt={pill.alt} loading="lazy" />
+              </span>
+              <span className="smsc-home__pill-label">
+                <span className="smsc-home__pill-line-1">{pill.line1}</span>
+                <span className="smsc-home__pill-line-2">{pill.line2}</span>
               </span>
             </Link>
           ))}
         </div>
       </section>
-    </>
+    </div>
   )
 }

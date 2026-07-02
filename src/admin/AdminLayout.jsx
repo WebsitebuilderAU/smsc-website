@@ -10,6 +10,7 @@ const adminNav = [
   { to: '/admin/meetings',    label: 'Meeting Notes' },
   { to: '/admin/newsletters', label: 'Chatterbox' },
   { to: '/admin/videos',      label: 'Videos' },
+  { to: '/admin/pages',       label: 'Page copy' },
   { to: '/admin/club',        label: 'Club Info' },
   { to: '/admin/contact',     label: 'Contact messages' },
 ]

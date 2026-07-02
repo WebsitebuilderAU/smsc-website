@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 // Years with optional poster image paths
 const EXPO_YEARS = [
-  { year: 2026, upcoming: true,  poster: '/images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg' },
+  { year: 2026, upcoming: true,  poster: './images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg' },
   { year: 2025, poster: null },
   { year: 2024, poster: null },
   { year: 2023, poster: null },

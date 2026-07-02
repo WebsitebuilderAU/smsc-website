@@ -8,7 +8,7 @@ import { useParams, Link } from 'react-router-dom'
 
 // Known EXPO poster images — keyed by year
 const POSTERS = {
-  2026: '/images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg',
+  2026: './images/anelia-28jun/6.5MB_EXPO_2026_Festival__Poster_31st_Oct_1st_Nov___copy.jpeg',
 }
 
 export default function ExpoYear() {
