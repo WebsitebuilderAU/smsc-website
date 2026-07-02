@@ -79,26 +79,74 @@ h1, h2, h3, h4 {
     background: rgba(255,255,255,0.15);
   }
 
-  /* Red-outlined nav pill in bottom band */
+  /* Red-outlined text-only nav pill — sits on navy footer band per Anelia's brief */
   .smsc-nav-pill {
     display: inline-block;
     border: 2px solid #c0392b;
     border-radius: 9999px;
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.45rem 1.1rem;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.55rem 1.35rem;
     text-decoration: none;
     text-align: center;
-    min-width: 6rem;
-    background: #253f8e;
+    min-width: 7rem;
+    background: transparent;
     transition: background 0.15s, color 0.15s;
-    line-height: 1.2;
+    line-height: 1.25;
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: 0.01em;
   }
   .smsc-nav-pill:hover,
   .smsc-nav-pill--active {
     background: #c0392b;
     color: white;
+  }
+
+  /* Navy pill strip — sits directly above the navy wordmark footer, no seam */
+  .smsc-bottom-pill-row {
+    background: #253f8e;
+    padding: 1.1rem 1.25rem 0.9rem;
+  }
+  .smsc-bottom-pill-row__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem 0.9rem;
+  }
+  .smsc-bottom-pill-row__pills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem 0.9rem;
+  }
+  .smsc-bottom-pill-row__email {
+    color: #ffffff;
+    font-size: 0.95rem;
+    margin-left: 0.75rem;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .smsc-bottom-pill-row__email-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .smsc-bottom-pill-row__email-link:hover {
+    color: #e6b800;
+  }
+  @media (max-width: 640px) {
+    .smsc-bottom-pill-row__inner {
+      gap: 0.5rem;
+    }
+    .smsc-bottom-pill-row__email {
+      width: 100%;
+      text-align: center;
+      margin-left: 0;
+    }
   }
 
   /* Red-outlined pill buttons used within page content (Events, Expo, Home tiles) */
@@ -197,11 +245,11 @@ h1, h2, h3, h4 {
    * with small square thumbnails. NO people photos, NO workshop shots.
    * ========================================================================= */
 
-  /* Home fills main with navy (no cream gap). Other pages get a cream wrapper below.
+  /* Home fills main with cream background (matches Anelia's brief page 1).
      flex: 1 1 auto so home stretches to fill available viewport height and
-     the collage can consume any leftover space between top and bottom bands. */
+     the collage can consume any leftover space between top band and pill row. */
   .smsc-home {
-    background: #253f8e;
+    background: #f8f6f0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -221,7 +269,7 @@ h1, h2, h3, h4 {
      Grows to fill available vertical space between top band and pill row. Image scales
      proportionally (object-fit: cover) so we fill the viewport height without stretching. */
   .smsc-home__collage-wrap {
-    background: #253f8e;
+    background: #f8f6f0;
     padding: 0;
     margin: 0;
     line-height: 0;

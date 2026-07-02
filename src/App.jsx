@@ -70,49 +70,55 @@ function TopBand({ subtitle }) {
   )
 }
 
-// Bottom navy band: 5 red-outlined pill nav buttons + email + gold wordmark
+// Bottom band — Anelia's brief page 1 layout:
+//   1. Cream strip: 5 red-outlined text-only pills + "Email Us: info@smsc.org.au" to the right
+//   2. Navy strip: gold Cinzel wordmark centred
 function BottomBand() {
   const { hash } = useLocation()
   const activePath = hash.replace('#', '') || '/'
 
   return (
-    <div style={{ background: '#253f8e' }}>
-      {/* Gold serif SMSC wordmark repeated on the bottom navy band */}
-      <div className="flex justify-center pt-1 pb-0 px-3">
-        <GoldWordmark />
-      </div>
+    <>
+      {/* Cream strip with pills + email (matches Anelia's PDF exactly) */}
+      <div className="smsc-bottom-pill-row">
+        <div className="smsc-bottom-pill-row__inner">
+          <div className="smsc-bottom-pill-row__pills">
+            {NAV_PILLS.map(p => {
+              const isActive = activePath === p.to || activePath.startsWith(p.to + '/')
+              return (
+                <Link
+                  key={p.to}
+                  to={p.to}
+                  className={`smsc-nav-pill${isActive ? ' smsc-nav-pill--active' : ''}`}
+                >
+                  <span className="block text-center leading-tight">
+                    <span className="block">{p.line1}</span>
+                    <span className="block">{p.line2}</span>
+                  </span>
+                </Link>
+              )
+            })}
+          </div>
 
-      {/* 5 nav pills + email row */}
-      <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 px-4 pt-1 pb-2">
-        {NAV_PILLS.map(p => {
-          const isActive = activePath === p.to || activePath.startsWith(p.to + '/')
-          return (
-            <Link
-              key={p.to}
-              to={p.to}
-              className={`smsc-nav-pill${isActive ? ' smsc-nav-pill--active' : ''}`}
+          <div className="smsc-bottom-pill-row__email">
+            <span className="font-semibold">Email Us: </span>
+            <a
+              href="mailto:info@smsc.org.au"
+              className="smsc-bottom-pill-row__email-link"
             >
-              <span className="block text-center leading-tight">
-                <span className="block">{p.line1}</span>
-                <span className="block">{p.line2}</span>
-              </span>
-            </Link>
-          )
-        })}
-
-        {/* Email — right-aligned on larger screens */}
-        <div className="w-full md:w-auto md:ml-4 text-center md:text-right text-white text-sm">
-          <span className="font-semibold">Email Us: </span>
-          <a
-            href="mailto:info@smsc.org.au"
-            className="underline hover:text-yellow-300 transition-colors"
-          >
-            info@smsc.org.au
-          </a>
+              info@smsc.org.au
+            </a>
+          </div>
         </div>
       </div>
 
-    </div>
+      {/* Navy strip with gold wordmark centred */}
+      <div className="smsc-bottom-wordmark" style={{ background: '#253f8e' }}>
+        <div className="flex justify-center py-2 px-3">
+          <GoldWordmark />
+        </div>
+      </div>
+    </>
   )
 }
 
@@ -140,7 +146,7 @@ export default function App() {
   const subtitle = useSubtitle()
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#253f8e' }}>
+    <div className="min-h-screen flex flex-col" style={{ background: '#f8f6f0' }}>
       {/* Top chrome band */}
       <TopBand subtitle={subtitle} />
 
