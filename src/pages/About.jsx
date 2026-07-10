@@ -13,12 +13,10 @@ const BODY_PARAGRAPHS = [
   `Our Club publishes a regular newsletter called Chatterbox click on "Newsletter" below. It's packed with interesting modelling tips, techniques, reports on the regular meetings and the progress made by members on their projects.`,
 ]
 
-// Left-column photos — matches Anelia's brief page 2 (single photo above logo)
 const LEFT_PHOTOS = [
   { src: './images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg', alt: 'Club activity compilation — members, models and workshop' },
 ]
 
-// Right-column photo — single tall compilation matching Anelia's brief page 2
 const RIGHT_PHOTOS = [
   { src: './images/anelia-28jun/Images_on_Brochure_for_Info_Page_.jpeg', alt: 'Model ship compilation from Club brochure' },
 ]
@@ -26,26 +24,22 @@ const RIGHT_PHOTOS = [
 export default function About() {
   return (
     <section className="max-w-[1400px] mx-auto px-2 py-4">
-      {/* 3-column layout — photos | text | photos — matches Anelia's brief */}
-      <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1.2fr_1.4fr] gap-4 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1.2fr_1.4fr] gap-4 items-start">
 
-        {/* Left column — single collage photo, per brief — stretches to text height */}
-        <div className="flex flex-col">
+        <div>
           {LEFT_PHOTOS.map((img, i) => (
             <img
               key={i}
               src={img.src}
               alt={img.alt}
-              className="w-full flex-1 min-h-0 object-cover block"
+              className="w-full h-auto object-contain block"
               loading={i === 0 ? 'eager' : 'lazy'}
             />
           ))}
         </div>
 
-        {/* Centre column — body text */}
         <div className="space-y-4 text-navy-800 leading-relaxed text-[0.95rem]">
           {BODY_PARAGRAPHS.map((para, i) => {
-            // Inline links for clickable references
             if (para.includes('"Calendar"')) {
               return (
                 <p key={i}>
@@ -94,7 +88,6 @@ export default function About() {
             return <p key={i}>{para}</p>
           })}
 
-          {/* Membership contact — bold, per PDF */}
           <div className="mt-6 pt-4 border-t border-navy-200 text-center">
             <p className="font-bold text-navy-900">
               Please email us if you would like to be a member.
@@ -111,14 +104,13 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right column — single tall compilation photo, per brief — stretches to text height */}
-        <div className="flex flex-col">
+        <div>
           {RIGHT_PHOTOS.map((img, i) => (
             <img
               key={i}
               src={img.src}
               alt={img.alt}
-              className="w-full flex-1 min-h-0 object-cover block"
+              className="w-full h-auto object-contain block"
               loading="lazy"
             />
           ))}
