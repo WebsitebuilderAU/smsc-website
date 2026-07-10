@@ -7,12 +7,9 @@
 }
 
 html, body {
-  @apply text-navy-900 font-body antialiased;
-  background: #ffffff;
+  @apply bg-navy-50 text-navy-900 font-body antialiased;
   overflow-x: hidden;
 }
-
-/* About page uses default light background per Anelia's PDF brief page 2. */
 
 h1, h2, h3, h4 {
   @apply font-display;
@@ -33,23 +30,16 @@ h1, h2, h3, h4 {
    * SMSC Chrome Components — matches Anelia's 28 Jun PDF
    * ===================================================== */
 
-  /* Gold serif wordmark — v18 baseline (Cinzel 400 + soft shadow) which
-     Anelia approved. Bumped ONE size larger per her 7 Jul landing markup
-     ("one or two sizes bigger" — one, not two, so it doesn't crowd the
-     ship logos). The 4-word BOLD treatment she liked is Club-page only
-     and handled in a separate scoped selector. */
+  /* Gold serif wordmark — thin classical Cinzel (weight 400) to match Anelia's mockup.
+     Light text-shadow only for legibility on navy, not for depth. */
   .smsc-wordmark {
     font-family: 'Cinzel', 'Trajan Pro', serif;
     font-weight: 400;
-    font-size: clamp(1.1rem, 3.95vw, 2.85rem);
+    font-size: clamp(1rem, 3.6vw, 2.6rem);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #e6b800;
-    /* 3D drop shadow to match Anelia's approved landing mockup —
-       warm dark brown offset down-right, gives the letters depth. */
-    text-shadow:
-      2px 2px 0 rgba(60, 30, 10, 0.95),
-      3px 3px 3px rgba(0, 0, 0, 0.55);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
     line-height: 1.1;
     white-space: nowrap;
     max-width: 100%;
@@ -58,7 +48,7 @@ h1, h2, h3, h4 {
   }
   @media (max-width: 640px) {
     .smsc-wordmark {
-      font-size: clamp(0.77rem, 4.7vw, 1.2rem);
+      font-size: clamp(0.7rem, 4.3vw, 1.1rem);
       letter-spacing: 0.02em;
       white-space: nowrap;
       overflow: hidden;
@@ -67,36 +57,23 @@ h1, h2, h3, h4 {
   }
   @media (max-width: 400px) {
     .smsc-wordmark {
-      font-size: clamp(0.72rem, 4.4vw, 1.05rem);
+      font-size: clamp(0.65rem, 4vw, 0.95rem);
       letter-spacing: 0.01em;
     }
   }
 
-  /* www.smsc.org.au white-bordered pill at top of every page.
-     Extra horizontal padding per Anelia's 7 Jul Club-page markup —
-     "Needs more space between outline and text." */
+  /* www.smsc.org.au white-bordered pill at top of every page */
   .smsc-www-pill {
     display: inline-block;
     border: 2px solid white;
     border-radius: 9999px;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 0.55rem 3.2rem;
-    margin-bottom: 0.55rem;
+    padding: 0.25rem 1.1rem;
+    margin-bottom: 0.75rem;
     text-decoration: none;
     transition: background 0.15s;
-  }
-
-  /* Bold wordmark scoped to Club page per Anelia's 7 Jul markup:
-     "Liked your earlier suggestion of 'bold' text for these 4 words."
-     Bold stroke swallows the tight shadow — push it further out so the
-     3D depth still reads on the Club page. */
-  .route-about .smsc-wordmark {
-    font-weight: 700;
-    text-shadow:
-      3px 3px 0 rgba(60, 30, 10, 0.95),
-      4px 4px 4px rgba(0, 0, 0, 0.55);
   }
   .smsc-www-pill:hover {
     background: rgba(255,255,255,0.15);
@@ -126,19 +103,10 @@ h1, h2, h3, h4 {
     color: white;
   }
 
-  /* Navy pill strip — sits directly above the navy wordmark footer.
-     Per Anelia's 7 Jul landing markup: 3-5px extra space between the top of
-     the SMSC letters and the red button outline. Adding it as bottom padding
-     on the pill row and top padding on the wordmark strip gives clear breathing. */
+  /* Navy pill strip — sits directly above the navy wordmark footer, no seam */
   .smsc-bottom-pill-row {
     background: #253f8e;
-    padding: 0.55rem 1.25rem calc(0.4rem + 12px);
-  }
-  .smsc-bottom-wordmark {
-    /* Reduce blue expanse under the wordmark per Anelia's 7 Jul markup, but
-       give 3-5px breathing room above the letters per the same markup. */
-    padding-top: 4px;
-    padding-bottom: 0;
+    padding: 1.1rem 1.25rem 0.9rem;
   }
   .smsc-bottom-pill-row__inner {
     max-width: 1400px;
@@ -427,177 +395,5 @@ h1, h2, h3, h4 {
     font-size: 0.78rem;
     opacity: 0.9;
     margin-top: 0.15rem;
-  }
-
-  /* ============================================
-   * Year Calendar — 4 wide × 3 tall mini-months
-   * Per Anelia's 7 Jul markup: whole year visible
-   * ============================================ */
-  .smsc-yearcal {
-    background: white;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 0.9rem 0.9rem 0.75rem;
-  }
-  .smsc-yearcal__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.75rem;
-  }
-  .smsc-yearcal__year {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #0b1f31;
-    letter-spacing: 0.05em;
-  }
-  .smsc-yearcal__legend {
-    display: flex;
-    gap: 0.9rem;
-    font-size: 0.72rem;
-    color: #334155;
-    flex-wrap: wrap;
-  }
-  .smsc-yearcal__legend span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .smsc-yearcal__swatch {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    display: inline-block;
-  }
-  .smsc-yearcal__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.55rem;
-  }
-  /* Keep 4 columns as long as viable. Drop to 3 only on narrow tablets. */
-  @media (max-width: 640px) {
-    .smsc-yearcal__grid { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
-  }
-  @media (max-width: 460px) {
-    .smsc-yearcal__grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 320px) {
-    .smsc-yearcal__grid { grid-template-columns: repeat(1, 1fr); }
-  }
-  .smsc-yearcal__month {
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    padding: 0.3rem 0.35rem 0.35rem;
-    background: white;
-  }
-  .smsc-yearcal__month-name {
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.78rem;
-    color: #0b1f31;
-    padding: 0.15rem 0 0.25rem;
-    border-bottom: 1px solid #e2e8f0;
-    margin-bottom: 0.25rem;
-  }
-  .smsc-yearcal__weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    font-size: 0.6rem;
-    color: #64748b;
-    padding-bottom: 0.15rem;
-  }
-  .smsc-yearcal__wd {
-    padding: 0.05rem 0;
-  }
-  .smsc-yearcal__days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
-  }
-  .smsc-yearcal__day {
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.65rem;
-    color: #0f172a;
-    background: transparent;
-    border: 0;
-    padding: 0;
-    border-radius: 2px;
-    cursor: default;
-    line-height: 1;
-  }
-  .smsc-yearcal__day--out {
-    visibility: hidden;
-  }
-  .smsc-yearcal__day:hover:not(.smsc-yearcal__day--out) {
-    outline: 1px solid #94a3b8;
-  }
-  /* Coloured event dates are buttons — cursor pointer to signal clickability */
-  .smsc-yearcal__day.bg-red-600,
-  .smsc-yearcal__day.bg-blue-700,
-  .smsc-yearcal__day.bg-green-600,
-  .smsc-yearcal__day.bg-navy-300 {
-    cursor: pointer;
-  }
-  .smsc-yearcal__day--sel {
-    outline: 2px solid #f59e0b !important;
-    outline-offset: -1px;
-  }
-  .smsc-yearcal__popup {
-    margin-top: 0.9rem;
-    min-height: 3.5rem;
-    padding: 0.75rem 1rem;
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    font-size: 0.85rem;
-  }
-  .smsc-yearcal__popup-empty {
-    color: #64748b;
-    font-style: italic;
-    font-size: 0.8rem;
-  }
-  .smsc-yearcal__popup-date {
-    font-weight: 700;
-    color: #0b1f31;
-    margin-bottom: 0.4rem;
-    font-size: 0.9rem;
-  }
-  .smsc-yearcal__popup-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-  .smsc-yearcal__popup-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .smsc-yearcal__popup-badge {
-    display: inline-block;
-    padding: 0.1rem 0.5rem;
-    border-radius: 3px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .smsc-yearcal__popup-badge.is-expo    { background: #dc2626; }
-  .smsc-yearcal__popup-badge.is-meeting { background: #1d4ed8; }
-  .smsc-yearcal__popup-badge.is-home    { background: #16a34a; }
-  .smsc-yearcal__popup-badge.is-other   { background: #64748b; }
-  .smsc-yearcal__popup-title {
-    color: #0f172a;
   }
 }
