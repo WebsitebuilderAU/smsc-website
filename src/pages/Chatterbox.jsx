@@ -1,102 +1,191 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import chatterboxData from '../data/chatterbox.json'
 
 /**
- * Newsletter / Chatterbox page — per Anelia's PDF page 7.
- * Shows the SMSC Chatterbox masthead, a search input, then a grid of issue tiles.
- * Each tile: masthead thumbnail + "ISSUE #XXX / MONTH YEAR".
- * Data source: src/data/chatterbox.json (no Supabase dependency on this page).
+ * Newsletter / Chatterbox page — per Anelia's 7 Jul 2026 markup.
+ *
+ *  Row 1 (top strip):
+ *    LEFT   – "Search ......" input inline with a small "Newsletter - Chatterbox" heading
+ *    RIGHT  – Red-outlined tile "Special Issues currently 33" linking to
+ *             the live SMSC special-issues page
+ *
+ *  Row 2 (below):
+ *    LEFT   – Full-size cover of the LATEST issue (currently #106 - Aug 2025)
+ *    MIDDLE – Smaller thumbnail of the previous issue (currently #105)
+ *
+ *  Row 3 – Past-issues linked list (matches the smsc.org.au archive style)
  */
 
-// Flatten all issues from the JSON into a single sorted array (newest first)
-const ALL_ISSUES = [...chatterboxData.regular].sort((a, b) => b.issue_no - a.issue_no)
+const REGULAR_ISSUES = [...chatterboxData.regular].sort((a, b) => b.issue_no - a.issue_no)
+const CURRENT = REGULAR_ISSUES[0]
+const PREVIOUS = REGULAR_ISSUES[1]
+const ARCHIVE = REGULAR_ISSUES.slice(2)
+const SPECIAL_COUNT = chatterboxData.special_issues_count
+const SPECIAL_URL = chatterboxData.special_issues_url
+
+// All regular issues sorted newest-first for the dropdown
+const ALL_ISSUES_NEWEST_FIRST = REGULAR_ISSUES
 
 export default function Chatterbox() {
-  const [query, setQuery] = useState('')
+  const [selectedId, setSelectedId] = useState('')
 
-  const filtered = useMemo(() => {
-    if (!query.trim()) return ALL_ISSUES
-    const q = query.toLowerCase()
-    return ALL_ISSUES.filter(issue =>
-      issue.title.toLowerCase().includes(q) ||
-      issue.date_text.toLowerCase().includes(q) ||
-      String(issue.issue_no).includes(q)
-    )
-  }, [query])
+  const handleSelect = (e) => {
+    const id = e.target.value
+    setSelectedId(id)
+    if (!id) return
+    const issue = ALL_ISSUES_NEWEST_FIRST.find(i => String(i.id) === id)
+    if (issue && issue.pdf_url) {
+      window.open(issue.pdf_url, '_blank', 'noopener,noreferrer')
+    }
+  }
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-6">
+    <section className="max-w-7xl mx-auto px-4 py-6">
 
-      {/* Big Chatterbox masthead — full width */}
-      <div className="mb-5">
-        <img
-          src="./images/smsc_chatterbox_masthead.png"
-          alt="SMSC Chatterbox newsletter masthead"
-          className="w-full max-w-2xl mx-auto block rounded shadow-sm border border-navy-200"
-          loading="eager"
-        />
+      {/* ── ROW 1 ────────────────────────────────────────────────────────────
+          LEFT: Search inline with "Newsletter - Chatterbox" heading
+          RIGHT: Special Issues tile linking to live special-issues page */}
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 mb-8 items-start">
+
+        {/* LEFT — Newsletter title + search input */}
+        <div>
+          <h2 className="font-display font-bold text-navy-900 text-xl mb-2">
+            Newsletter - Chatterbox
+          </h2>
+          <div className="flex items-center gap-3">
+            <label
+              htmlFor="chatterbox-select"
+              className="font-display font-semibold text-navy-800 text-base leading-none whitespace-nowrap"
+            >
+              Search
+            </label>
+            <select
+              id="chatterbox-select"
+              value={selectedId}
+              onChange={handleSelect}
+              className="flex-1 max-w-md bg-white border-2 border-navy-400
+                         focus:outline-none focus:border-navy-700 rounded py-1.5 px-3
+                         text-navy-800 text-base"
+              aria-label="Select a Chatterbox issue"
+            >
+              <option value="">Select an issue…</option>
+              {ALL_ISSUES_NEWEST_FIRST.map(issue => (
+                <option key={issue.id} value={issue.id}>
+                  Issue #{issue.issue_no} — {issue.date_text}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* RIGHT — Special Issues red-outlined tile.
+           Anelia's markup: "Special Issues currently N" as a link/count. */}
+        <a
+          href={SPECIAL_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="block border-2 border-red-600 rounded-lg px-6 py-4 bg-white
+                     hover:bg-red-50 hover:shadow-md transition text-center
+                     min-w-[240px]"
+          aria-label={`Open Special Issues — currently ${SPECIAL_COUNT} available`}
+        >
+          <h3 className="font-display font-bold text-navy-900 text-lg leading-tight">
+            Special Issues
+          </h3>
+          <p className="text-navy-700 text-sm mt-1">
+            currently <span className="font-bold text-red-700">{SPECIAL_COUNT}</span>
+          </p>
+        </a>
       </div>
 
-      {/* Search input — dotted underline style matching PDF */}
-      <div className="mb-6">
-        <input
-          type="search"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="Search ..............................."
-          className="w-full max-w-md bg-transparent border-0 border-b-2 border-navy-400
-                     focus:outline-none focus:border-navy-700 py-2 px-1
-                     text-navy-800 text-lg font-semibold placeholder:text-navy-400 placeholder:font-normal"
-          aria-label="Search Chatterbox issues"
-        />
-      </div>
+      {/* ── ROW 2 ────────────────────────────────────────────────────────────
+          Current issue (large) + previous issue (small). */}
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 mb-10 items-start">
 
-      {/* Copyright notice — per PDF */}
-      <p className="text-xs text-navy-500 mb-6 max-w-2xl">
-        All photographs and articles published remain the copyright property of the contributor and
-        SMSC unless released. Some articles are researched from internet material and no copyright
-        infringement is intended.
-      </p>
+        {/* LEFT — Current (latest) issue, full-size */}
+        <a
+          href={CURRENT.pdf_url}
+          target="_blank"
+          rel="noreferrer"
+          className="group block border-2 border-navy-300 hover:border-red-600 rounded shadow-sm
+                     bg-white overflow-hidden transition"
+          aria-label={`Open current ${CURRENT.title}`}
+        >
+          <div className="aspect-[3/4] bg-white overflow-hidden flex items-center justify-center">
+            <img
+              src={CURRENT.cover_url || './images/smsc_chatterbox_masthead.png'}
+              alt={`${CURRENT.title} cover`}
+              className="w-full h-full object-contain group-hover:scale-[1.02] transition"
+              loading="eager"
+            />
+          </div>
+          <div className="p-4 text-center bg-white border-t border-navy-100">
+            <p className="font-display font-bold text-navy-900 text-lg">
+              ISSUE # {CURRENT.issue_no}
+            </p>
+            <p className="text-navy-700 text-sm mt-1">{CURRENT.date_text}</p>
+            <p className="text-red-700 text-xs mt-2 font-semibold uppercase tracking-wide">
+              Current issue — click to open PDF
+            </p>
+          </div>
+        </a>
 
-      {/* Issue grid — masthead thumbnail + issue label */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {filtered.map(issue => (
+        {/* MIDDLE — Previous issue, smaller thumbnail */}
+        {PREVIOUS && (
           <a
-            key={issue.id}
-            href={issue.pdf_url}
+            href={PREVIOUS.pdf_url}
             target="_blank"
             rel="noreferrer"
-            className="group block border-2 border-navy-200 rounded hover:border-red-600 transition bg-white shadow-sm overflow-hidden"
-            aria-label={`Open ${issue.title}`}
+            className="group block border-2 border-navy-300 hover:border-red-600 rounded shadow-sm
+                       bg-white overflow-hidden transition max-w-[260px]"
+            aria-label={`Open previous ${PREVIOUS.title}`}
           >
-            {/* Masthead thumbnail */}
-            <div className="aspect-[3/2] bg-navy-50 overflow-hidden">
+            <div className="aspect-[3/4] bg-white overflow-hidden flex items-center justify-center">
               <img
-                src="./images/smsc_chatterbox_masthead.png"
-                alt=""
-                className="w-full h-full object-cover group-hover:scale-105 transition"
+                src={PREVIOUS.cover_url || './images/smsc_chatterbox_masthead.png'}
+                alt={`${PREVIOUS.title} cover`}
+                className="w-full h-full object-contain group-hover:scale-[1.02] transition"
                 loading="lazy"
               />
             </div>
-            {/* Issue number + date */}
-            <div className="p-2 text-center">
-              <p className="font-bold text-navy-900 text-xs leading-tight">
-                ISSUE # {issue.issue_no}
+            <div className="p-3 text-center bg-white border-t border-navy-100">
+              <p className="font-display font-bold text-navy-900 text-base">
+                ISSUE # {PREVIOUS.issue_no}
               </p>
-              <p className="text-navy-600 text-xs mt-0.5">{issue.date_text}</p>
+              <p className="text-navy-700 text-xs mt-0.5">{PREVIOUS.date_text}</p>
+              <p className="text-navy-500 text-xs mt-1 uppercase tracking-wide">Previous</p>
             </div>
           </a>
-        ))}
-
-        {filtered.length === 0 && (
-          <p className="col-span-full text-center py-10 text-navy-500">
-            No issues match that search.
-          </p>
         )}
       </div>
 
-      {/* Contact footer — per PDF */}
-      <div className="mt-10 text-xs text-navy-500 space-y-1">
+      {/* ── ROW 3 ────────────────────────────────────────────────────────────
+          Past-issues linked archive list (styled like the smsc.org.au page). */}
+      <div className="border-t-2 border-navy-200 pt-6 mb-8">
+        <h3 className="font-display font-bold text-navy-900 text-lg mb-3">
+          Past Issues
+        </h3>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1.5">
+          {ARCHIVE.map(issue => (
+            <li key={issue.id}>
+              <a
+                href={issue.pdf_url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-navy-800 hover:text-red-700 hover:underline text-sm"
+              >
+                Issue #{issue.issue_no} — {issue.date_text}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="text-xs text-navy-500 mt-4 italic">
+          Previous issues before #{ARCHIVE.length ? ARCHIVE[ARCHIVE.length - 1].issue_no : 92} are available on request by email.
+        </p>
+      </div>
+
+      {/* Contact footer — verbatim from the club's PDF letterhead */}
+      <div className="text-xs text-navy-500 space-y-1 border-t border-navy-100 pt-4">
         <p>The CHATTERBOX INDEX is available at smsc.org.au</p>
         <p>Please address all correspondence to SMSC and/or any members of the Executive Committee to the Secretary at <a href="mailto:secretary@smsc.org.au" className="underline">secretary@smsc.org.au</a></p>
         <p>All mail and contributions to CHATTERBOX to be sent to the Editors, Tom Wolf: <a href="mailto:tom@aces.net.au" className="underline">tom@aces.net.au</a> or Michael Bennett: <a href="mailto:mjbennett@ozemail.com.au" className="underline">mjbennett@ozemail.com.au</a></p>

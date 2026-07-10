@@ -45,8 +45,9 @@ function TopBand({ subtitle }) {
         />
       </div>
 
-      {/* Centre content: www pill + wordmark + subtitle */}
-      <div className="flex flex-col items-center px-3 sm:px-28 pt-4 pb-4">
+      {/* Centre content: www pill + wordmark + subtitle.
+         Tight vertical padding per Anelia's 7 Jul markup — too much blue at top/bottom. */}
+      <div className="flex flex-col items-center px-3 sm:px-28 pt-1 pb-1">
         {/* www.smsc.org.au pill */}
         <Link
           to="/"
@@ -74,8 +75,8 @@ function TopBand({ subtitle }) {
 //   1. Cream strip: 5 red-outlined text-only pills + "Email Us: info@smsc.org.au" to the right
 //   2. Navy strip: gold Cinzel wordmark centred
 function BottomBand() {
-  const { hash } = useLocation()
-  const activePath = hash.replace('#', '') || '/'
+  const { pathname } = useLocation()
+  const activePath = pathname || '/'
 
   return (
     <>
@@ -92,7 +93,8 @@ function BottomBand() {
                   className={`smsc-nav-pill${isActive ? ' smsc-nav-pill--active' : ''}`}
                 >
                   <span className="block text-center leading-tight">
-                    <span className="block">{p.line1}</span>
+                    {/* Bold top line per Anelia's 7 Jul Club-page markup */}
+                    <span className="block font-bold">{p.line1}</span>
                     <span className="block">{p.line2}</span>
                   </span>
                 </Link>
@@ -112,9 +114,9 @@ function BottomBand() {
         </div>
       </div>
 
-      {/* Navy strip with gold wordmark centred */}
+      {/* Navy strip with gold wordmark centred — tight padding per Anelia's 7 Jul markup */}
       <div className="smsc-bottom-wordmark" style={{ background: '#253f8e' }}>
-        <div className="flex justify-center py-2 px-3">
+        <div className="flex justify-center py-0 px-3">
           <GoldWordmark />
         </div>
       </div>
@@ -133,8 +135,8 @@ const PAGE_SUBTITLES = {
 }
 
 function useSubtitle() {
-  const { hash } = useLocation()
-  const path = hash.replace('#', '') || '/'
+  const { pathname } = useLocation()
+  const path = pathname || '/'
   // Longest matching prefix wins
   const match = Object.keys(PAGE_SUBTITLES)
     .filter(k => path === k || path.startsWith(k + '/'))
@@ -144,14 +146,22 @@ function useSubtitle() {
 
 export default function App() {
   const subtitle = useSubtitle()
+  const { pathname } = useLocation()
+  // Route class enables page-scoped CSS overrides (e.g. bold wordmark on Club page
+  // per Anelia's 7 Jul markup: "Liked your earlier suggestion of 'bold' text for
+  // these 4 words.").
+  const routeClass = 'route' + (pathname === '/' ? '-home' : pathname.replace(/\//g, '-'))
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#f8f6f0' }}>
+    // Wrapper background is white by default; the .route-about CSS rule paints
+    // it black ONLY on the Club/About page per Anelia's 7 Jul markup.
+    <div className={`min-h-screen flex flex-col ${routeClass}`}>
       {/* Top chrome band */}
       <TopBand subtitle={subtitle} />
 
-      {/* Page content — main fills remaining viewport height. Home stretches its collage
-         to fill this space (Option A); other pages ride on their own cream background. */}
+      {/* Page content — main fills remaining viewport height; wrapper is black so any
+         leftover space beyond the page's own cream section shows black per Anelia's
+         7 Jul markup ("if the page is bigger make the rest of the space black"). */}
       <main className="flex flex-col flex-1 min-h-0">
         <Outlet />
       </main>

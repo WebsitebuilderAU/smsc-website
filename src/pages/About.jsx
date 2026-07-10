@@ -13,47 +13,33 @@ const BODY_PARAGRAPHS = [
   `Our Club publishes a regular newsletter called Chatterbox click on "Newsletter" below. It's packed with interesting modelling tips, techniques, reports on the regular meetings and the progress made by members on their projects.`,
 ]
 
-// Left-column photos — club meeting/event shots
+// Left-column photos — matches Anelia's brief page 2 (single photo above logo)
 const LEFT_PHOTOS = [
-  { src: './images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg', alt: 'Club meeting compilation' },
-  { src: './images/anelia-28jun/IMG_6436.jpeg', alt: 'Club members working on a model' },
-  { src: './images/anelia-28jun/IMG_7518.jpeg', alt: 'Members gathering' },
+  { src: './images/anelia-28jun/Club_Info_Page_Photo_Compilation.jpeg', alt: 'Club activity compilation — members, models and workshop' },
 ]
 
-// Right-column photos — model ship shots
+// Right-column photo — single tall compilation matching Anelia's brief page 2
 const RIGHT_PHOTOS = [
-  { src: './images/anelia-28jun/Images_on_Brochure_for_Info_Page_.jpeg', alt: 'Models on brochure' },
-  { src: './images/anelia-28jun/IMG_7369.jpeg', alt: 'Meeting with ship models' },
-  { src: './images/anelia-28jun/IMG_8005.jpeg', alt: 'Detailed model ship' },
+  { src: './images/anelia-28jun/Images_on_Brochure_for_Info_Page_.jpeg', alt: 'Model ship compilation from Club brochure' },
 ]
 
 export default function About() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8">
-      {/* 3-column layout — photos | text | photos */}
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr_1fr] gap-6">
+    <section className="max-w-[1400px] mx-auto px-2 py-4">
+      {/* 3-column layout — photos | text | photos — matches Anelia's brief */}
+      <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1.2fr_1.4fr] gap-4 items-stretch">
 
-        {/* Left column — club/meeting photos */}
-        <div className="flex flex-col gap-3">
+        {/* Left column — single collage photo, per brief — stretches to text height */}
+        <div className="flex flex-col">
           {LEFT_PHOTOS.map((img, i) => (
-            <div key={i} className="overflow-hidden rounded shadow-sm border border-navy-200">
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-44 object-cover block"
-                loading={i === 0 ? 'eager' : 'lazy'}
-              />
-            </div>
-          ))}
-          {/* SMSC logo at bottom of left column — matches PDF */}
-          <div className="mt-2 flex justify-center">
             <img
-              src="./images/smsc_logo.png"
-              alt="Sydney Model Shipbuilders Club Inc"
-              className="h-28 w-auto"
-              loading="lazy"
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              className="w-full flex-1 min-h-0 object-cover block"
+              loading={i === 0 ? 'eager' : 'lazy'}
             />
-          </div>
+          ))}
         </div>
 
         {/* Centre column — body text */}
@@ -125,17 +111,16 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right column — model ship photos */}
-        <div className="flex flex-col gap-3">
+        {/* Right column — single tall compilation photo, per brief — stretches to text height */}
+        <div className="flex flex-col">
           {RIGHT_PHOTOS.map((img, i) => (
-            <div key={i} className="overflow-hidden rounded shadow-sm border border-navy-200">
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-44 object-cover block"
-                loading="lazy"
-              />
-            </div>
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              className="w-full flex-1 min-h-0 object-cover block"
+              loading="lazy"
+            />
           ))}
         </div>
 
